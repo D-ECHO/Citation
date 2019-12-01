@@ -1,0 +1,204 @@
+<?xml version="1.0"?>
+<system name="C550: Hydraulic System"> 
+	<!-- System:
+		* Hydraulic Fluid Reservoir:	OVERFULL: 150 in³  FULL: 125 in³  "HYD LOW LEVEL": <= 38 in³ 
+		* engine-driven Hydraulic Pumps:	always active, "open center" circulation if no hydraulic power needed, if hydraulic power needed: bypass valve closed -> pressure build-up
+		* control valve
+		* "HYD PRESS ON": pressure > ~ 155 PSI
+		* operating pressure: 1350 - 1500 PSI
+		* hydraulic power users:
+			* Landing Gear Extension/Retraction: cycle time: 6 secs
+			* Speed Brake
+			* Reversers
+	-->
+	<property value="125">systems/hydraulic/reservoir-level-in3</property>
+	<channel name="Pumps">
+		<fcs_function>
+			<function>
+				<table>
+					<independentVar>propulsion/engine[0]/n2-real</independentVar>
+					<tableData>
+						0	0
+						1	0
+						45	1
+						104	1
+					</tableData>
+				</table>
+			</function>
+			<output>systems/hydraulic/pumps/left-edp-power</output>
+		</fcs_function>
+		<fcs_function>
+			<function>
+				<table>
+					<independentVar>propulsion/engine[1]/n2-real</independentVar>
+					<tableData>
+						0	0
+						1	0
+						45	1
+						104	1
+					</tableData>
+				</table>
+			</function>
+			<output>systems/hydraulic/pumps/right-edp-power</output>
+		</fcs_function>
+		<fcs_function>
+			<function>
+				<product>
+					<property>systems/hydraulic/pumps/left-edp-power</property>
+					<property>systems/hydraulic/bypass-valve-position</property>
+				</product>
+			</function>
+			<output>systems/hydraulic/pumps/left-edp-load</output>
+		</fcs_function>
+		<fcs_function>
+			<function>
+				<product>
+					<property>systems/hydraulic/pumps/right-edp-power</property>
+					<property>systems/hydraulic/bypass-valve-position</property>
+				</product>
+			</function>
+			<output>systems/hydraulic/pumps/right-edp-load</output>
+		</fcs_function>
+		<summer name="systems/hydraulic/pumps/combined-edp-load">
+			<input>systems/hydraulic/pumps/left-edp-load</input>
+			<input>systems/hydraulic/pumps/right-edp-load</input>
+		</summer>
+	</channel>
+	<channel name="Bypass Valve">
+		<switch name="systems/hydraulic/power-requested">
+			<default value="0"/>		<!-- no power requested, command bypass valve open -->
+			<test value="1" logic="OR">
+				systems/hydraulic/gear-pressure-requested eq 1
+				systems/hydraulic/speedbrake-pressure-requested eq 1
+				systems/hydraulic/reverser-pressure-requested eq 1
+			</test>
+		</switch>
+		<kinematic>
+			<input>systems/hydraulic/power-requested</input>
+			<traverse>
+				<setting>
+					<position>0.0</position>	<!-- fully open -->
+					<time>0.0</time>
+				</setting>
+				<setting>
+					<position>1.0</position>	<!-- fully closed -->
+					<time>0.1</time>
+				</setting>
+			</traverse>
+			<output>systems/hydraulic/bypass-valve-position</output>
+		</kinematic>
+	</channel>
+	<property value="0.6">systems/hydraulic/loss-rate</property>
+	<channel name="Hydraulic Pressure">
+		<!-- Hydraulic Pressure is dependent on:
+			* EDP power -> build-up speed
+			* bypass valve position
+			* hydraulic fluid available
+		-->
+		<summer name="systems/hydraulic/delta-pressure-raw">
+			<input>systems/hydraulic/pumps/combined-edp-load</input>
+			<input>-systems/hydraulic/gear-load</input>
+			<input>-systems/hydraulic/speedbrake-load</input>
+			<input>-systems/hydraulic/reverser-load</input>
+			<input>-systems/hydraulic/loss-rate</input>
+		</summer>
+		<switch name="systems/hydraulic/delta-pressure">
+			<default value="systems/hydraulic/delta-pressure-raw"/>
+			<test value="0.01">
+				systems/hydraulic/pressure-int le 0.01
+			</test>
+			<test value="-0.01">
+				systems/hydraulic/pressure-int ge 0.99
+			</test>
+		</switch>
+		<integrator>
+			<input>systems/hydraulic/delta-pressure</input>
+			<output>systems/hydraulic/pressure-int</output>
+			<clipto>
+				<min> 0 </min>
+				<max> 1 </max>
+			</clipto>
+			<c1>1</c1>
+		</integrator>
+		<fcs_function>
+			<function>
+				<product>
+					<property>systems/hydraulic/pressure-int</property>
+					<table>
+						<independentVar>systems/hydraulic/reservoir-level-in3</independentVar>
+						<tableData>
+							0	0
+							38	1350
+							125	1500
+							150	1700
+						</tableData>
+					</table>
+				</product>
+			</function>
+			<output>systems/hydraulic/pressure-psi</output>
+		</fcs_function>
+		<fcs_function>
+			<function>
+				<product>
+					<property>systems/hydraulic/gear-pressure-requested</property>
+					<table>
+						<independentVar>systems/hydraulic/pressure-psi</independentVar>
+						<tableData>
+							0	0
+							1350	0.1
+							1500	0.167
+						</tableData>
+					</table>
+				</product>
+			</function>
+			<output>systems/hydraulic/gear-power</output>
+		</fcs_function>
+		<pure_gain>
+			<input>systems/hydraulic/gear-power</input>
+			<gain>0.1</gain>
+			<output>systems/hydraulic/gear-load</output>
+		</pure_gain>
+		<fcs_function>
+			<function>
+				<product>
+					<property>systems/hydraulic/speedbrake-pressure-requested</property>
+					<table>
+						<independentVar>systems/hydraulic/pressure-psi</independentVar>
+						<tableData>
+							0	0
+							1350	0.9
+							1500	1
+						</tableData>
+					</table>
+				</product>
+			</function>
+			<output>systems/hydraulic/speedbrake-power</output>
+		</fcs_function>>
+		<pure_gain>
+			<input>systems/hydraulic/speedbrake-power</input>
+			<gain>0.05</gain>
+			<output>systems/hydraulic/speedbrake-load</output>
+		</pure_gain>
+		<fcs_function>
+			<function>
+				<product>
+					<property>systems/hydraulic/reverser-pressure-requested</property>
+					<table>
+						<independentVar>systems/hydraulic/pressure-psi</independentVar>
+						<tableData>
+							0	0
+							1350	2.8
+							1500	3
+						</tableData>
+					</table>
+				</product>
+			</function>
+			<output>systems/hydraulic/reverser-power</output>
+		</fcs_function>
+		<pure_gain>
+			<input>systems/hydraulic/reverser-power</input>
+			<gain>0.05</gain>
+			<output>systems/hydraulic/reverser-load</output>
+		</pure_gain>
+	</channel>
+</system>

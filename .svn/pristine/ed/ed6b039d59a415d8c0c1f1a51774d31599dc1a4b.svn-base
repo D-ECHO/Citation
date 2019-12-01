@@ -1,0 +1,396 @@
+<PropertyList>
+
+    <model>
+        <path>Models/Instruments/electricpanel.xml</path>
+        <offsets>
+            <x-m>0.002</x-m>
+            <y-m>-0.561</y-m>
+            <z-m>0.103</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Models/Instruments/lightingpanel.xml</path>
+        <offsets>
+            <x-m>0.002</x-m>
+            <y-m>-0.316</y-m>
+            <z-m>0.021</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Models/Instruments/ctnpanel.xml</path>
+        <offsets>
+            <x-m>0</x-m>
+            <y-m>-0.081</y-m>
+            <z-m>0.254</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Models/Instruments/VHF-22/ctl22-com1.xml</path>
+        <offsets>
+            <x-m>0</x-m>
+            <y-m>0.046</y-m>
+            <z-m>0.187</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Models/Instruments/VHF-22/ctl22-com2.xml</path>
+        <offsets>
+            <x-m>0</x-m>
+            <y-m>0.107</y-m>
+            <z-m>0.187</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Models/Instruments/VIR-32/ctl32-nav1.xml</path>
+        <offsets>
+            <x-m>0</x-m>
+            <y-m>0.046</y-m>
+            <z-m>0.120</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Models/Instruments/VIR-32/ctl32-nav2.xml</path>
+        <offsets>
+            <x-m>0</x-m>
+            <y-m>0.107</y-m>
+            <z-m>0.120</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Models/Instruments/TDR-94/ctl92-transponder.xml</path>
+        <offsets>
+            <x-m>0</x-m>
+            <y-m>0.214</y-m>
+            <z-m>0.079</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Models/Instruments/ADF-462/ctl62-adf.xml</path>
+        <offsets>
+            <x-m>0</x-m>
+            <y-m>0.122</y-m>
+            <z-m>0.266</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Models/Instruments/asi.xml</path>
+        <offsets>
+            <x-m>0</x-m>
+            <y-m>-0.417</y-m>
+            <z-m>0.338</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Models/Instruments/asi.xml</path>
+        <offsets>
+            <x-m>0</x-m>
+            <y-m>0.204</y-m>
+            <z-m>0.338</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Models/Instruments/alt.xml</path>
+        <offsets>
+            <x-m>0</x-m>
+            <y-m>-0.210</y-m>
+            <z-m>0.336</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Models/Instruments/alt.xml</path>
+        <offsets>
+            <x-m>0</x-m>
+            <y-m>0.422</y-m>
+            <z-m>0.336</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Models/Instruments/rmi.xml</path>
+        <offsets>
+            <x-m>0</x-m>
+            <y-m>-0.418</y-m>
+            <z-m>0.250</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Models/Instruments/rmi.xml</path>
+        <offsets>
+            <x-m>0</x-m>
+            <y-m>0.206</y-m>
+            <z-m>0.2505</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Models/Instruments/vsi.xml</path>
+        <offsets>
+            <x-m>0</x-m>
+            <y-m>-0.213</y-m>
+            <z-m>0.169</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Models/Instruments/vsi.xml</path>
+        <offsets>
+            <x-m>0</x-m>
+            <y-m>0.422</y-m>
+            <z-m>0.169</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Models/Instruments/ralt.xml</path>
+        <offsets>
+            <x-m>0</x-m>
+            <y-m>-0.210</y-m>
+            <z-m>0.250</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Models/Instruments/ralt.xml</path>
+        <offsets>
+            <x-m>0</x-m>
+            <y-m>0.422</y-m>
+            <z-m>0.250</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Models/Instruments/ai.xml</path>
+        <offsets>
+            <x-m>0</x-m>
+            <y-m>-0.312</y-m>
+            <z-m>0.322</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Models/Instruments/ai.xml</path>
+        <offsets>
+            <x-m>0</x-m>
+            <y-m>0.312</y-m>
+            <z-m>0.322</z-m>
+        </offsets>
+    </model>
+
+    <model>
+      <path>Models/Instruments/hsi.xml</path>
+      <overlay>
+        <volts>/instrumentation/hsi[0]/volts</volts>
+        <inputs>
+          <from-flag>/instrumentation/hsi[0]/inputs/from-flag</from-flag>
+          <gs-needle-deflection>/instrumentation/hsi[0]/inputs/gs-needle-deflection</gs-needle-deflection>
+          <has-gs>/instrumentation/hsi[0]/inputs/has-gs</has-gs>
+          <heading-deg>/instrumentation/hsi[0]/inputs/heading-deg</heading-deg>
+          <heading-needle-deflection>/instrumentation/hsi[0]/inputs/heading-needle-deflection</heading-needle-deflection>
+          <in-range>/instrumentation/hsi[0]/inputs/in-range</in-range>
+          <nav-distance>/instrumentation/hsi[0]/inputs/nav-distance</nav-distance>
+          <radials>
+            <selected-deg>/instrumentation/hsi[0]/inputs/radials/selected-deg</selected-deg>
+          </radials>
+          <to-flag>/instrumentation/hsi[0]/inputs/to-flag</to-flag>
+        </inputs>
+      </overlay>
+      <offsets>
+        <x-m>0</x-m>
+        <y-m>-0.312</y-m>
+        <z-m>0.200</z-m>
+      </offsets>
+    </model>
+
+    <model>
+      <path>Models/Instruments/hsi.xml</path>
+      <overlay>
+        <volts>/instrumentation/hsi[1]/volts</volts>
+        <inputs>
+          <from-flag>/instrumentation/hsi[1]/inputs/from-flag</from-flag>
+          <gs-needle-deflection>/instrumentation/hsi[1]/inputs/gs-needle-deflection</gs-needle-deflection>
+          <has-gs>/instrumentation/hsi[1]/inputs/has-gs</has-gs>
+          <heading-deg>/instrumentation/hsi[1]/inputs/heading-deg</heading-deg>
+          <heading-needle-deflection>/instrumentation/hsi[1]/inputs/heading-needle-deflection</heading-needle-deflection>
+          <in-range>/instrumentation/hsi[1]/inputs/in-range</in-range>
+          <nav-distance>/instrumentation/hsi[1]/inputs/nav-distance</nav-distance>
+          <radials>
+            <selected-deg>/instrumentation/hsi[1]/inputs/radials/selected-deg</selected-deg>
+          </radials>
+          <to-flag>/instrumentation/hsi[1]/inputs/to-flag</to-flag>
+        </inputs>
+      </overlay>
+      <offsets>
+        <x-m>0</x-m>
+        <y-m>0.311</y-m>
+        <z-m>0.200</z-m>
+      </offsets>
+    </model>
+
+    <model>
+        <path>Models/Instruments/dme40.xml</path>
+        <offsets>
+            <x-m>0</x-m>
+            <y-m>-0.213</y-m>
+            <z-m>0.086</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Models/Instruments/dme40.xml</path>
+        <offsets>
+            <x-m>0</x-m>
+            <y-m>0.207</y-m>
+            <z-m>0.161</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Models/Instruments/aoa.xml</path>
+        <offsets>
+            <x-m>0.0</x-m>
+            <y-m>-0.498</y-m>
+            <z-m>0.346</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Models/Instruments/aoa.xml</path>
+        <offsets>
+            <x-m>0.0</x-m>
+            <y-m>0.498</y-m>
+            <z-m>0.345</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Models/Instruments/M877/m877.xml</path>
+        <offsets>
+            <x-m>0</x-m>
+            <y-m>-0.498</y-m>
+            <z-m>0.288</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Models/Instruments/M877/m877.xml</path>
+        <offsets>
+            <x-m>0</x-m>
+            <y-m>0.498</y-m>
+            <z-m>0.288</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Models/Instruments/marker.xml</path>
+        <offsets>
+            <x-m>0</x-m>
+            <y-m>-0.312</y-m>
+            <z-m>0.393</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Models/Instruments/marker.xml</path>
+        <offsets>
+            <x-m>0</x-m>
+            <y-m>0.312</y-m>
+            <z-m>0.393</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <!-- Pilot's autopilot panel -->
+        <path>Models/Instruments/FD-mode-ctl.xml</path>
+        <overlay>
+          <hsi-number>0</hsi-number>
+          <selected-nav>/instrumentation/hsi[0]/selected-nav</selected-nav>
+        </overlay>
+        <offsets>
+            <x-m>0</x-m>
+            <y-m>-0.315</y-m>
+            <z-m>0.127</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <!-- Copilot's autopilot panel -->
+        <path>Models/Instruments/FD-mode-ctl.xml</path>
+        <overlay>
+          <hsi-number>1</hsi-number>
+          <selected-nav>/instrumentation/hsi[1]/selected-nav</selected-nav>
+        </overlay>
+        <offsets>
+            <x-m>0</x-m>
+            <y-m>0.312</y-m>
+            <z-m>0.126</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Models/Instruments/vor-ind.xml</path>
+        <offsets>
+            <x-m>0</x-m>
+            <y-m>-0.417</y-m>
+            <z-m>0.166</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Models/Instruments/altalerter.xml</path>
+        <offsets>
+            <x-m>0</x-m>
+            <y-m>0.048</y-m>
+            <z-m>0.251</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Models/Instruments/audiopnl.xml</path>
+        <offsets>
+            <x-m>0</x-m>
+            <y-m>-0.542</y-m>
+            <z-m>0.233</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Models/Instruments/audiopnl.xml</path>
+        <offsets>
+            <x-m>0</x-m>
+            <y-m>0.542</y-m>
+            <z-m>0.233</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Models/Instruments/oat.xml</path>
+        <offsets>
+            <x-m>0</x-m>
+            <y-m>-0.557</y-m>
+            <z-m>0.287</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Models/Instruments/oat.xml</path>
+        <offsets>
+            <x-m>0</x-m>
+            <y-m>0.557</y-m>
+            <z-m>0.287</z-m>
+        </offsets>
+    </model>
+
+</PropertyList>

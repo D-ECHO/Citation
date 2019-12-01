@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--
+Author : Syd Adams
+Citation magnetic compass
+-->
+<PropertyList>
+
+<path>magcompass.ac</path>
+
+  <effect>
+    <condition>
+      <greater-than>
+	<property>sim/version/flightgear</property>
+	<value>3.4.999</value>
+      </greater-than>
+    </condition>
+    <inherits-from>Aircraft/Citation/Models/Effects/interior-shadow/citationII-interior-flightdeck</inherits-from>
+    <object-name>compassrose</object-name>
+    <object-name>magcompass</object-name>
+    <object-name>magcompass.002</object-name>
+    <object-name>magcompass.sight</object-name>
+  </effect>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>compassrose</object-name>
+        <property>instrumentation/magnetic-compass/indicated-heading-deg</property>
+        <axis>
+            <x>0.0</x>
+            <y>0.0</y>
+            <z>1.0</z>
+        </axis>
+        <center>
+            <x-m>0</x-m>
+            <y-m>0</y-m>
+            <z-m>0</z-m>
+        </center>
+    </animation>
+
+</PropertyList>

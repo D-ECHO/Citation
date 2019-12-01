@@ -1,0 +1,404 @@
+<?xml version="1.0"?>
+<system name="C550: FCS"><!--
+	<channel name="Engine_instruments" execrate="4">
+		<fcs_function>
+			<function>
+				<product>
+					<property>engines/engune/fuel-flow-gph
+	</channel>-->
+	<channel name="Engines">
+		<pure_gain>
+			<input>/controls/engines/engine[0]/throttle-real</input>
+			<gain>1.0</gain>
+			<output>fcs/throttle-cmd-norm[0]</output>
+			<output>fcs/throttle-pos-norm[0]</output>
+		</pure_gain>
+		<pure_gain>
+			<input>/controls/engines/engine[1]/throttle-real</input>
+			<gain>1.0</gain>
+			<output>fcs/throttle-cmd-norm[1]</output>
+			<output>fcs/throttle-pos-norm[1]</output>
+		</pure_gain>
+		<!-- TODO better ITT implementation -->
+		<fcs_function>
+			<function>
+				<table>
+					<independentVar>propulsion/engine[0]/n1</independentVar>
+					<tableData>
+						0	0
+						125	1.25
+					</tableData>
+				</table>
+			</function>
+			<output>/engines/engine[0]/itt-norm</output>
+		</fcs_function>
+		<fcs_function>
+			<function>
+				<table>
+					<independentVar>propulsion/engine[1]/n1</independentVar>
+					<tableData>
+						0	0
+						125	1.25
+					</tableData>
+				</table>
+			</function>
+			<output>/engines/engine[1]/itt-norm</output>
+		</fcs_function>
+		<pure_gain>
+			<input>propulsion/engine[0]/reverser-angle-rad</input>
+			<gain>0.5</gain>
+			<output>/engines/engine[0]/reverser-pos-norm</output>
+		</pure_gain>
+		<pure_gain>
+			<input>propulsion/engine[1]/reverser-angle-rad</input>
+			<gain>0.5</gain>
+			<output>/engines/engine[1]/reverser-pos-norm</output>
+		</pure_gain>
+		<!-- Accessories taking power from the engine:
+			electrical generators
+			hydraulics
+			bleed
+			TODO
+				*simulate bleed system properly
+		-->
+		<!-- N2 Correction -->
+		<!-- TODO this is just a "proof of concept", following need to be done at least:
+			*simulate hydraulic system properly
+			*simulate drop in thrust due to mechanical power being taken (i.e. make thrust (bleed-factor that affects thrust) dependent on calculated n2)
+			*find out the correct/realistic values how much n2 is influenced by these
+		-->
+		<fcs_function>
+			<function>
+				<product>
+					<property>propulsion/engine[0]/n2</property>
+					<table>
+						<independentVar>/systems/electrical/supplier/generator[0]/load</independentVar>
+						<tableData>
+							0	1
+							400	0.99
+						</tableData>
+					</table>
+					<table>
+						<independentVar>systems/hydraulic/pumps/left-edp-load</independentVar>
+						<tableData>
+							0	1
+							1	0.99
+						</tableData>
+					</table>
+				</product>
+			</function>
+			<output>/engines/engine[0]/n2-real</output>
+			<output>propulsion/engine[0]/n2-real</output>
+		</fcs_function>
+		<fcs_function>
+			<function>
+				<product>
+					<property>propulsion/engine[1]/n2</property>
+					<table>
+						<independentVar>/systems/electrical/supplier/generator[1]/load</independentVar>
+						<tableData>
+							0	1
+							400	0.99
+						</tableData>
+					</table>
+					<table>
+						<independentVar>systems/hydraulic/pumps/right-edp-load</independentVar>
+						<tableData>
+							0	1
+							1	0.99
+						</tableData>
+					</table>
+				</product>
+			</function>
+			<output>/engines/engine[1]/n2-real</output>
+			<output>propulsion/engine[1]/n2-real</output>
+		</fcs_function>
+		<!-- Effect of bleed:
+			6 pounds per minute air per engine
+		-->
+		<fcs_function>
+			<function><!--
+				<sum>-->
+					<difference>
+						<value>1</value>
+						<quotient>
+							<property>propulsion/engine[0]/n2-real</property>
+							<table>
+								<independentVar>propulsion/engine[0]/n2</independentVar>
+								<tableData>
+									0	1
+									1	1
+									104	104
+								</tableData>
+							</table>
+						</quotient>
+					</difference><!--
+				</sum>-->
+			</function>
+			<output>propulsion/engine[0]/bleed-factor</output>
+		</fcs_function>
+		<fcs_function>
+			<function><!--
+				<sum>-->
+					<difference>
+						<value>1</value>
+						<quotient>
+							<property>propulsion/engine[1]/n2-real</property>
+							<table>
+								<independentVar>propulsion/engine[1]/n2</independentVar>
+								<tableData>
+									0	1
+									1	1
+									104	104
+								</tableData>
+							</table>
+						</quotient>
+					</difference><!--
+				</sum>-->
+			</function>
+			<output>propulsion/engine[1]/bleed-factor</output>
+		</fcs_function>
+	</channel>
+	<channel name="Thruster">
+		<summer name="Thrust Coefficient Left">
+			<output>systems/propulsion/thrust-coefficient-left</output>
+		</summer>
+		<summer name="Thrust Coefficient Right">
+			<output>systems/propulsion/thrust-coefficient-right</output>
+		</summer>
+		<summer name="Thrust Coefficient Left-Right">
+			<input>systems/propulsion/thrust-coefficient-left</input>
+			<input>-systems/propulsion/thrust-coefficient-right</input>
+			<output>systems/propulsion/thrust-coefficient-left-right</output>
+		</summer>
+		<summer name="Thrust Coefficient">
+			<input>systems/propulsion/thrust-coefficient-left</input>
+			<input>systems/propulsion/thrust-coefficient-right</input>
+			<output>systems/propulsion/thrust-coefficient</output>
+		</summer>
+	</channel>
+	<channel name="Thrust Reverse">
+		<pure_gain name="Thrust Reverse Position">
+			<input>/controls/engines/engine[0]/reverser-real</input>
+			<gain>2.0</gain>
+			<output>systems/reverser/reverser-pos-norm</output>
+		</pure_gain>
+		<switch name="systems/hydraulic/reverser-pressure-requested">
+			<default value="0"/>
+			<test value="1" logic="AND">
+				systems/reverser/reverser-pos-norm eq 2.0
+				propulsion/engine[0]/reverser-angle-rad ne 2.0
+			</test>
+			<test value="1" logic="AND">
+				systems/reverser/reverser-pos-norm eq 0.0
+				propulsion/engine[0]/reverser-angle-rad ne 0.0
+			</test>
+		</switch>
+		<actuator name="Thrust Reverse Control Engine 0">
+			<input>systems/reverser/reverser-pos-norm</input>
+			<rate_limit>systems/hydraulic/reverser-power</rate_limit>
+			<output>propulsion/engine[0]/reverser-angle-rad</output>
+			<output>propulsion/engine[1]/reverser-angle-rad</output>
+		</actuator>
+	</channel>
+	<channel name="Landing Gear">
+		<switch name="systems/left-gear-safety-switch">
+			<default value="0"/>
+			<test value="1">
+				gear/unit[1]/WOW eq 1
+			</test>
+		</switch>
+		<switch name="systems/hydraulic/gear-movement-requested">
+			<default value="0"/>
+			<test value="1" logic="AND">
+				gear/gear-cmd-norm eq 0
+				gear/gear-pos-norm ne 0
+			</test>
+			<test value="1" logic="AND">
+				gear/gear-cmd-norm eq 1
+				gear/gear-pos-norm ne 1
+			</test>
+		</switch>
+		<switch name="systems/hydraulic/gear-pressure-requested">
+			<default value="0"/>
+			<test value="1" logic="AND">
+				systems/hydraulic/gear-movement-requested eq 1
+				systems/left-gear-safety-switch ne 1
+			</test>
+		</switch>
+		
+		<switch name="fcs/gear-no-wow">
+			<default value="1"/>
+			<test logic="AND" value="0">
+				gear/unit[1]/WOW eq 1
+				gear/unit[2]/WOW eq 1
+			</test>
+		</switch>
+		
+		<actuator name="Landing Gear Control">
+			<input>gear/gear-cmd-norm</input>
+			<rate_limit>systems/hydraulic/gear-power</rate_limit>
+			<output>gear/gear-pos-norm</output>
+		</actuator>
+	</channel>
+	<channel name="Speedbrake">
+		<switch name="systems/hydraulic/speedbrake-pressure-requested">
+			<default value="0"/>
+			<test value="1" logic="AND">
+				/controls/flight/speedbrake eq 0
+				fcs/speedbrake-pos-norm ne 0
+			</test>
+			<test value="1" logic="AND">
+				/controls/flight/speedbrake eq 1
+				fcs/speedbrake-pos-norm ne 1
+			</test>
+		</switch>
+		<actuator name="Speedbrake Actuation">
+			<input>/controls/flight/speedbrake</input>
+			<rate_limit>systems/hydraulic/speedbrake-power</rate_limit>
+			<output>fcs/speedbrake-pos-norm</output>
+		</actuator>
+	</channel>
+	<channel name="Pitch">
+		<summer name="Pitch Trim Sum">
+			<input>fcs/elevator-cmd-norm</input>
+			<input>fcs/pitch-trim-cmd-norm</input>
+			<clipto>
+				<min> -1 </min>
+				<max>  1 </max>
+			</clipto>
+		</summer>
+		<aerosurface_scale name="Elevator Control">
+			<input>fcs/pitch-trim-sum</input>
+			<range>
+				<min> -0.35 </min>
+				<max>  0.35 </max>
+			</range>
+			<output>fcs/elevator-pos-rad</output>
+		</aerosurface_scale>
+		<aerosurface_scale name="Elevator Normalization">
+			<input>fcs/elevator-pos-rad</input>
+			<domain>
+				<min> -0.35 </min>
+				<max>  0.35 </max>
+			</domain>
+			<range>
+				<min> -1 </min>
+				<max>  1 </max>
+			</range>
+			<output>fcs/elevator-pos-norm</output>
+		</aerosurface_scale>
+	</channel>
+	<channel name="Roll">
+		<summer name="Roll Trim Sum">
+			<input>fcs/aileron-cmd-norm</input>
+			<input>fcs/roll-trim-cmd-norm</input>
+			<clipto>
+				<min> -1 </min>
+				<max>  1 </max>
+			</clipto>
+		</summer>
+		<aerosurface_scale name="Left Aileron Control">
+			<input>fcs/roll-trim-sum</input>
+			<range>
+				<min> -0.35 </min>
+				<max>  0.35 </max>
+			</range>
+			<output>fcs/left-aileron-pos-rad</output>
+		</aerosurface_scale>
+		<aerosurface_scale name="Right Aileron Control">
+			<input>-fcs/roll-trim-sum</input>
+			<range>
+				<min> -0.35 </min>
+				<max>  0.35 </max>
+			</range>
+			<output>fcs/right-aileron-pos-rad</output>
+		</aerosurface_scale>
+		<aerosurface_scale name="Left Aileron Normalization">
+			<input>fcs/left-aileron-pos-rad</input>
+			<domain>
+				<min> -0.35 </min>
+				<max>  0.35 </max>
+			</domain>
+			<range>
+				<min> -1 </min>
+				<max>  1 </max>
+			</range>
+			<output>fcs/left-aileron-pos-norm</output>
+		</aerosurface_scale>
+		<aerosurface_scale name="Right Aileron Normalization">
+			<input>fcs/right-aileron-pos-rad</input>
+			<domain>
+				<min> -0.35 </min>
+				<max>  0.35 </max>
+			</domain>
+			<range>
+				<min> -1 </min>
+				<max>  1 </max>
+			</range>
+			<output>fcs/right-aileron-pos-norm</output>
+		</aerosurface_scale>
+	</channel>
+	<channel name="Yaw">
+		<summer name="Rudder Command Sum">
+			<input>fcs/rudder-cmd-norm</input>
+			<input>fcs/yaw-trim-cmd-norm</input>
+			<clipto>
+				<min> -1 </min>
+				<max>  1 </max>
+			</clipto>
+		</summer>
+		<aerosurface_scale name="Rudder Control">
+			<input>fcs/rudder-command-sum</input>
+			<range>
+				<min> -0.35 </min>
+				<max>  0.35 </max>
+			</range>
+			<output>fcs/rudder-pos-rad</output>
+		</aerosurface_scale>
+		<aerosurface_scale name="Rudder Normalization">
+			<input>fcs/rudder-pos-rad</input>
+			<domain>
+				<min> -0.35 </min>
+				<max>  0.35 </max>
+			</domain>
+			<range>
+				<min> -1 </min>
+				<max>  1 </max>
+			</range>
+			<output>fcs/rudder-pos-norm</output>
+		</aerosurface_scale>
+	</channel>
+	<channel name="Flaps">
+		<kinematic name="Flaps Control">
+			<input>fcs/flap-cmd-norm</input>
+			<traverse>
+				<setting>
+					<position>  0 </position>
+					<time>      0 </time>
+				</setting>
+				<setting>
+					<position> 15 </position>
+					<time>      4 </time>
+				</setting>
+				<setting>
+					<position> 40 </position>
+					<time>      3 </time>
+				</setting>
+			</traverse>
+			<output>fcs/flap-pos-deg</output>
+		</kinematic>
+		<aerosurface_scale name="Flap Normalization">
+			<input>fcs/flap-pos-deg</input>
+			<domain>
+				<min>  0 </min>
+				<max> 40 </max>
+			</domain>
+			<range>
+				<min> 0 </min>
+				<max> 1 </max>
+			</range>
+			<output>fcs/flap-pos-norm</output>
+		</aerosurface_scale>
+	</channel>
+</system>

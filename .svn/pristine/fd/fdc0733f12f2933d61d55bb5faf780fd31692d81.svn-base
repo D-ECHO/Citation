@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <path>light-cone.ac</path>
+
+  <effect>
+    <inherits-from>Effects/light-cone</inherits-from>
+    <object-name>Cone</object-name>
+  </effect>
+
+  <animation>
+    <object-name>Cone</object-name>
+    <object-name>Cone-texture</object-name>
+    <object-name>Light</object-name>
+    <nopreview/>
+    <type>select</type>
+    <condition>
+      <and>
+        <not>
+          <property>sim/rendering/rembrandt/enabled</property>
+        </not>
+        <greater-than>
+          <property>gear/gear/position-norm</property>
+          <value>0.85</value>
+        </greater-than>
+      </and>
+    </condition>
+  </animation>
+
+</PropertyList>

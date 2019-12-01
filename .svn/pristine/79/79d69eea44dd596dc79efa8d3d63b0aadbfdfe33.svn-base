@@ -1,0 +1,65 @@
+Citation II:
+============
+
+Still to do:
+------------
+
+flightdeck:
+* adjust view height vs human model height vs cabin height - humans appear too big / Citation is too small (Thanks to Thomas Polzer)
+* Modelling: overhead panel
+* Modelling: more details like bags on side-panels, maps, manuals etc
+             (a manual like on 707?)
+* XML/Nasal: ongoing: circuit breakers go into: prop:controls/electric/circuit-breakers/bus-[emer|left|right]/cb-*
+
+cabin:
+* Modelling: aft compartment
+
+exterior:
+* Modelling: more details for landing gear
+* Texturing: plating, rivets & stuff (-> normalmap) WIP
+* Effects:   Thrust/Flame effect doesn't work properly, when engines cut off in flight
+             the thrust flame doesn't disappear. It illudes me why.
+
+generic:
+* Texturing: better wood texture!?!
+* Modelling: MPModel!!! (LoRes)
+* XML/Nasal: Need version check for all shaders and effects for backward compability!
+* XML/Nasal: Spool up behaves somewhat strange: when ignition switched off during spool
+             up, it stays at current value until ignition is switched on again. Should
+             spool down instead! While at it, starter-disengage should be hung into
+             that as well!
+* XML        Get rid of the startup sound! Really annoying!
+             > While I am at it, does anyone know the specifics behind the sound being
+             > played while loading the sim? That is another real annoying bit of bad
+             > effects. It is especially annoying when trying to use some presets
+             > parameters such as flaps or starter and having to listen to the flaps
+             > deploy sound while the sim loads. Is there a work around to eliminate
+             > it? If not where/what in the source is the suspected trouble spot?
+             This is caused by <mode>in-transit</mode> sounds iirc, and can be easily
+             mitigated in the sound config by adding a condition check on some /sim/signals/
+             property, or on /sim/startup/splash-alpha=0
+
+autopilot:
+* XML/Nasal: When "Pitch-Trim" circuit-breaker is pulled
+             (prop:controls/electric/circuit-breakers/bus-left/cb-pitch-trim),
+             the autopilot can no longer control elevator-trim! Manual input on
+             Trim-wheel is always possible, but not for A/P!
+             Manual states: If electric elevator trim is malfunctioning/off the
+             autopilot should no longer be used! Seems like there's no automatic
+             A/P off. It simply should stop having an effect.
+
+multiplayer:
+* XML/Nasal: Lights non functional over mp -> needs fix !Not intended over mp, should be built into the mp-version ($FGDATA/AI/Aircraft/Citation/Citation-II.*)
+
+##########################################################
+
+
+
+Shader / Effects incompabilities:
+
+Shader/Effect			needs FG version
+===========================================================
+ALS flame/heat blur effect	3.5
+ALS cockpit shadows		3.5
+ALS glass shader		3.5
+ALS landing light		3.2

@@ -1,0 +1,34 @@
+<PropertyList>
+
+<path>oat.ac</path>
+
+  <effect>
+    <condition>
+      <greater-than>
+	<property>sim/version/flightgear</property>
+	<value>3.4.999</value>
+      </greater-than>
+    </condition>
+    <inherits-from>Aircraft/Citation/Models/Effects/interior-shadow/citationII-interior-flightdeck</inherits-from>
+    <object-name>OAT</object-name>
+    <object-name>OAT.face</object-name>
+    <object-name>OAT.needle</object-name>
+  </effect>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>OAT.needle</object-name>
+        <property>environment/temperature-degc</property>
+            <interpolation>
+            <entry><ind>-60</ind><dep>0</dep></entry>
+            <entry><ind>0</ind><dep>129</dep></entry>
+            <entry><ind>60</ind><dep>257.5</dep></entry>
+        </interpolation>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z></z>
+        </axis>
+    </animation>
+
+</PropertyList>

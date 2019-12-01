@@ -1,0 +1,465 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+  <!-- Suppliers are defined in Citation-II-common.xml -->
+
+  <filter>
+    <type>gain</type>
+    <input>
+      <property>systems/electrical/outputs/main-left-xover/dc-nav1</property>
+    </input>
+    <output>
+      <property>systems/electrical/outputs/nav[0]</property>
+    </output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <input>
+      <property>systems/electrical/outputs/main-left-xover/dc-adf1</property>
+    </input>
+    <output>
+      <property>systems/electrical/outputs/adf[0]</property>
+    </output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <input>
+      <property>systems/electrical/outputs/main-left-xover/dc-dme1</property>
+    </input>
+    <output>
+      <property>systems/electrical/outputs/dme[0]</property>
+    </output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <input>
+      <property>systems/electrical/outputs/main-left-xover/dc-xpdr1</property>
+    </input>
+    <output>
+      <property>systems/electrical/outputs/transponder[0]</property>
+    </output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <input>
+      <property>systems/electrical/outputs/main-left-xover/dc-comm2</property>
+    </input>
+    <output>
+      <property>systems/electrical/outputs/comm[1]</property>
+    </output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <input>
+      <property>systems/electrical/outputs/main-left-xover/dc-dg1</property>
+    </input>
+    <output>
+      <property>systems/electrical/outputs/DG[0]</property>
+    </output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <input>
+      <property>systems/electrical/outputs/main-right/dc-dme2</property>
+    </input>
+    <output>
+      <property>systems/electrical/outputs/dme[1]</property>
+    </output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <input>
+      <property>systems/electrical/outputs/main-right/dc-xpdr2</property>
+    </input>
+    <output>
+      <property>systems/electrical/outputs/transponder[1]</property>
+    </output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <input>
+      <property>systems/electrical/outputs/main-right/dc-adf2</property>
+    </input>
+    <output>
+      <property>systems/electrical/outputs/adf[1]</property>
+    </output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <input>
+      <property>systems/electrical/outputs/main-right/dc-gpws</property>
+    </input>
+    <output>
+      <property>systems/electrical/outputs/mk-viii[0]</property>
+    </output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <input>
+      <property>systems/electrical/outputs/emer/dc-nav2</property>
+    </input>
+    <output>
+      <property>systems/electrical/outputs/nav[1]</property>
+    </output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <input>
+      <property>systems/electrical/outputs/emer/dc-comm1</property>
+    </input>
+    <output>
+      <property>systems/electrical/outputs/comm[0]</property>
+    </output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <input>
+      <property>systems/electrical/outputs/emer/dc-dg2</property>
+    </input>
+    <output>
+      <property>systems/electrical/outputs/DG[1]</property>
+    </output>
+  </filter>
+
+<!--
+##################
+####  LIGHTS  ####
+##################
+  -->
+
+  <!-- circumvent odd nasal program which controls beacon operation -->
+  <filter>
+    <type>gain</type>
+    <input>
+      <condition>
+        <and>
+          <property>systems/electrical/outputs/main-left/light-beacon</property>
+          <property>controls/lighting/beacon-switch</property>
+        </and>
+      </condition>
+      <value>1</value>
+    </input>
+    <input>0</input>
+    <output>
+      <property>controls/lighting/beacon</property>
+    </output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <input>
+      <condition>
+        <and>
+          <property>controls/lighting/landing-light-switch</property>
+          <property>systems/electrical/outputs/main-left/light-landing-left</property>
+        </and>
+      </condition>
+      <value>1</value>
+    </input>
+    <input>
+      <value>0</value>
+    </input>
+    <output>
+      <property>controls/lighting/landing-light</property>
+      <property>sim/rendering/als-secondary-lights/use-landing-light</property>
+    </output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <input>
+      <condition>
+        <and>
+          <property>controls/lighting/landing-light-switch[1]</property>
+          <property>systems/electrical/outputs/main-right/light-landing-right</property>
+        </and>
+      </condition>
+      <value>1</value>
+    </input>
+    <output>
+      <property>controls/lighting/landing-light[1]</property>
+      <property>sim/rendering/als-secondary-lights/use-alt-landing-light</property>
+    </output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <input>
+      <condition>
+        <and>
+          <property>controls/lighting/strobe-switch</property>
+          <property>systems/electrical/outputs/main-left/light-strobe</property>
+        </and>
+      </condition>
+      <value>1</value>
+    </input>
+    <output>
+      <property>controls/lighting/strobe</property>
+    </output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <input>
+      <condition>
+        <and>
+          <property>controls/lighting/nav-lights-switch</property>
+          <property>systems/electrical/outputs/main-left/light-nav</property>
+        </and>
+      </condition>
+      <value>1</value>
+    </input>
+    <output>
+      <property>controls/lighting/nav-lights</property>
+    </output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <input>
+      <condition>
+        <and>
+          <property>controls/lighting/recog-lights-switch</property>
+          <property>systems/electrical/outputs/main-left/light-recog-left</property>
+        </and>
+      </condition>
+      <value>1</value>
+    </input>
+    <output>
+      <property>controls/lighting/recog-light[0]</property>
+    </output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <input>
+      <condition>
+        <and>
+          <property>controls/lighting/recog-lights-switch</property>
+          <property>systems/electrical/outputs/main-right/light-recog-right</property>
+        </and>
+      </condition>
+      <value>1</value>
+    </input>
+    <output>
+      <property>controls/lighting/recog-light[1]</property>
+    </output>
+  </filter>
+
+<!--
+##########################
+####  Electric panel  ####
+##########################
+  -->
+
+  <filter>
+    <type>exponential</type>
+    <filter-time>0.5</filter-time>
+    <input>
+      <condition>
+        <equals>
+          <property>controls/electric/voltage-sel</property>
+          <value>0</value>
+        </equals>
+      </condition>
+      <property>systems/electrical/outputs/battery/batt-voltage</property>
+    </input>
+    <input>
+      <condition>
+        <equals>
+          <property>controls/electric/voltage-sel</property>
+          <value>-1</value>
+        </equals>
+      </condition>
+      <property>systems/electrical/outputs/isolated-left/gen-voltage-left</property>
+    </input>
+    <input>
+      <condition>
+        <equals>
+          <property>controls/electric/voltage-sel</property>
+          <value>1</value>
+        </equals>
+      </condition>
+      <property>systems/electrical/outputs/isolated-right/gen-voltage-right</property>
+    </input>
+    <output>
+      <property>controls/electric/voltage-display</property>
+    </output>
+    <min>10</min>
+    <max>40</max>
+  </filter>
+
+  <!-- simplified to enable manual engine start for the moment -->
+  <filter>
+    <type>gain</type>
+    <input>
+      <condition>
+        <or>
+          <and>
+            <equals>
+              <property>controls/fuel/tank/boost-pump-switch</property>
+              <value>1</value>
+            </equals>
+            <property>systems/electrical/outputs/main-right-xover/fuel-boost-left</property>
+          </and>
+          <and>
+            <equals>
+              <property>controls/fuel/tank/boost-pump-switch</property>
+              <value>-1</value>
+            </equals>
+            <property>systems/electrical/outputs/main-left/fuel-boost-left</property>
+            <property>controls/electric/engine[0]/starter-btn</property>
+          </and>
+        </or>
+      </condition>
+      <value>1</value>
+    </input>
+    <value>0</value>
+    <output>
+      <property>controls/fuel/tank/boost-pump</property>
+    </output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <input>
+      <condition>
+        <or>
+          <and>
+            <equals>
+              <property>controls/fuel/tank[1]/boost-pump-switch</property>
+              <value>1</value>
+            </equals>
+            <property>systems/electrical/outputs/main-left/fuel-boost-right</property>
+          </and>
+          <and>
+            <equals>
+              <property>controls/fuel/tank[1]/boost-pump-switch</property>
+              <value>-1</value>
+            </equals>
+            <property>systems/electrical/outputs/main-right/fuel-boost-right</property>
+            <property>controls/electric/engine[1]/starter-btn</property>
+          </and>
+        </or>
+      </condition>
+      <value>1</value>
+    </input>
+    <value>0</value>
+    <output>
+      <property>controls/fuel/tank[1]/boost-pump</property>
+    </output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <input>
+      <condition>
+        <not><property>systems/electrical/outputs/main-left/left-starter</property></not>
+      </condition>
+      <value>0</value>
+    </input>
+    <input>
+      <property>controls/electric/engine[0]/starter-btn</property>
+    </input>
+    <output>
+      <property>controls/electric/engine[0]/starter-btn</property>
+    </output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <input>
+      <condition>
+        <and>
+          <property>systems/electrical/outputs/main-left/left-starter</property>
+          <property>controls/electric/engine[0]/starter-btn</property>
+        </and>
+      </condition>
+      <value>1</value>
+    </input>
+    <output>
+      <property>controls/engines/engine[0]/starter</property>
+    </output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <input>
+      <condition>
+        <not><property>systems/electrical/outputs/main-right/right-starter</property></not>
+      </condition>
+      <value>0</value>
+    </input>
+    <input>
+      <property>controls/electric/engine[1]/starter-btn</property>
+    </input>
+    <output>
+      <property>controls/electric/engine[1]/starter-btn</property>
+    </output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <input>
+      <condition>
+        <and>
+          <property>systems/electrical/outputs/main-right/right-starter</property>
+          <property>controls/electric/engine[1]/starter-btn</property>
+        </and>
+      </condition>
+      <value>1</value>
+    </input>
+    <output>
+      <property>controls/engines/engine[1]/starter</property>
+    </output>
+  </filter>
+
+<!--
+###########################
+####  Flight Controls  ####
+###########################
+  -->
+
+  <filter>
+    <type>gain</type>
+    <input>
+      <condition>
+        <greater-than>
+          <property>gear/gear[1]/compression-norm</property>
+          <value>0.01</value>
+        </greater-than>
+      </condition>
+      <value>1</value>
+    </input>
+    <output>
+      <property>controls/electric/maingear-switch</property>
+    </output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <input>
+      <condition>
+        <property>systems/electrical/outputs/main-left/sys-speed-brake</property>
+      </condition>
+      <property>controls/flight/speedbrake-switch</property>
+    </input>
+    <output>
+      <property>controls/flight/speedbrake</property>
+    </output>
+  </filter>
+
+</PropertyList>

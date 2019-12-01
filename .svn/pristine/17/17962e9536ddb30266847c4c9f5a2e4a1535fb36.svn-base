@@ -1,0 +1,1167 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+************************************************************************
+
+This files ties together all the components used by FGFS to represent
+the Cessna 550/551 Citation II and its aftermarket engine upgrade the
+Sierra Super-II. Components include the flight data model, instrument
+panel, and external 3D model.
+
+November 14 2004  Curtis L. Olson  http://www.flightgear.org/~curt
+Copyright (c) 2014 Ludovic Brenta <ludovic@ludovic-brenta.org>
+2015-04-08 chris_blues <chris@musicchris.de>
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+************************************************************************
+-->
+<PropertyList include="Aircraft/Generic/Human/Include/walker-include.xml">
+  <sim>
+    <author>Curt Olson - Syd Adams - Ludovic Brenta - chris_blues</author>
+    <flight-model>yasim</flight-model>
+    <startup>
+      <splash-texture>Pics/Citation-II-splash-01.png</splash-texture>
+      <splash-texture>Pics/Citation-II-splash-02.png</splash-texture>
+      <splash-texture>Pics/Citation-II-splash-03.png</splash-texture>
+      <splash-texture>Pics/Citation-II-splash-04.png</splash-texture>
+    </startup>
+
+    <thumbnail n="0">
+      <type>exterior</type>
+      <name>Pics/thumbnail-exterior.jpg</name>
+    </thumbnail>
+    <thumbnail n="1">
+      <type>panel</type>
+      <name>Pics/thumbnail-panel.jpg</name>
+    </thumbnail>
+
+    <aircraft-version>3.0.11</aircraft-version>
+    <status>production</status>
+    <rating>
+      <FDM type="int">5</FDM>
+      <systems type="int">4</systems>
+      <cockpit type="int">5</cockpit>
+      <model type="int">5</model>
+    </rating>
+
+    <model>
+      <path>Aircraft/Citation/Models/Citation-II.xml</path>
+      <autostart type="bool">0</autostart>
+      <livery>
+        <file type="string">blue-grey</file>
+      </livery>
+      <registration>
+        <red type="double">0</red>
+        <green type="double">0</green>
+        <blue type="double">0</blue>
+      </registration>
+      <rendering>
+        <refl_correction type="string">-0.1</refl_correction>
+        <amb_correction type="string">0.10</amb_correction>
+      </rendering>
+
+      <!-- Settings for human models -->
+      <crew>
+        <pilot n="0">
+          <pose include="Models/Human/pose-pilot.xml"/>
+          <character>0</character>
+	  <gender>1</gender>
+	  <hair>1</hair>
+          <outfit>2</outfit>
+          <equipment>0</equipment>
+          <eyewear>1</eyewear>
+          <headgear>1</headgear>
+	  <enabled type="bool">1</enabled>
+        </pilot>
+        <pilot n="1">
+          <pose include="Models/Human/pose-copilot.xml"/>
+          <character>0</character>
+	  <gender>0</gender>
+	  <hair>1</hair>
+          <outfit>2</outfit>
+          <equipment>0</equipment>
+          <eyewear>1</eyewear>
+          <headgear>1</headgear>
+	  <enabled type="bool">1</enabled>
+        </pilot>
+      </crew>
+      <pax>
+        <pax n="0">
+          <pose include="Models/Human/pose-pax0.xml"/>
+          <character>0</character>
+	  <gender>1</gender>
+	  <hair>1</hair>
+          <outfit>0</outfit>
+          <equipment>0</equipment>
+          <eyewear>0</eyewear>
+          <headgear>0</headgear>
+	  <enabled type="bool">1</enabled>
+        </pax>
+        <pax n="1">
+          <pose include="Models/Human/pose-pax1.xml"/>
+          <character>0</character>
+	  <gender>0</gender>
+	  <hair>1</hair>
+          <outfit>2</outfit>
+          <equipment>0</equipment>
+          <eyewear>0</eyewear>
+          <headgear>0</headgear>
+	  <enabled type="bool">1</enabled>
+        </pax>
+        <pax n="2">
+          <pose include="Models/Human/pose-pax2.xml"/>
+          <character>0</character>
+	  <gender>0</gender>
+	  <hair>1</hair>
+          <outfit>2</outfit>
+          <equipment>0</equipment>
+          <eyewear>0</eyewear>
+          <headgear>0</headgear>
+	  <enabled type="bool">1</enabled>
+        </pax>
+        <pax n="3">
+          <pose include="Models/Human/pose-pax3.xml"/>
+          <character>0</character>
+	  <gender>1</gender>
+	  <hair>1</hair>
+          <outfit>0</outfit>
+          <equipment>0</equipment>
+          <eyewear>0</eyewear>
+          <headgear>0</headgear>
+	  <enabled type="bool">1</enabled>
+        </pax>
+        <pax n="4">
+          <pose include="Models/Human/pose-pax4.xml"/>
+          <character>0</character>
+	  <gender>0</gender>
+	  <hair>1</hair>
+          <outfit>2</outfit>
+          <equipment>0</equipment>
+          <eyewear>0</eyewear>
+          <headgear>0</headgear>
+	  <enabled type="bool">1</enabled>
+        </pax>
+        <pax n="5">
+          <pose include="Models/Human/pose-pax5.xml"/>
+          <character>0</character>
+	  <gender>1</gender>
+	  <hair>1</hair>
+          <outfit>0</outfit>
+          <equipment>0</equipment>
+          <eyewear>0</eyewear>
+          <headgear>0</headgear>
+	  <enabled type="bool">1</enabled>
+        </pax>
+        <pax n="6">
+          <pose include="Models/Human/pose-pax6.xml"/>
+          <character>0</character>
+	  <gender>0</gender>
+	  <hair>1</hair>
+          <outfit>0</outfit>
+          <equipment>0</equipment>
+          <eyewear>0</eyewear>
+          <headgear>0</headgear>
+	  <enabled type="bool">1</enabled>
+        </pax>
+      </pax>
+
+      <!-- Human models persistent menu choice -->
+      <occupants type="bool">true</occupants>
+
+      <!-- An exit for the walker -->
+      <map>
+        <default_exit>
+          <x-offset-m type="float">5.8</x-offset-m>
+          <y-offset-m type="float">-1.4</y-offset-m>
+        </default_exit>
+      </map>
+    </model>
+
+    <!-- Walker settings -->
+    <walker>
+      <gender>1</gender>
+      <outfit>2</outfit>
+      <equipment>1</equipment>
+      <eyewear>1</eyewear>
+      <headgear>0</headgear>
+      <altitude-ft>-5.0</altitude-ft>
+    </walker>
+
+    <dimensions>
+      <radius-m type="double">10.0</radius-m>
+      <parkpos-offset-m type="double">0.0</parkpos-offset-m>
+    </dimensions>
+    <!-- <aircraft-class> can be: ga (general aviation), cargo (cargo), gate (commercial passenger traffic), mil-fighter (military fighter), mil-cargo (military transport)
+         see: http://wiki.flightgear.org/Interactive_traffic#A_technical_perspective -->
+    <aircraft-class type="string">ga</aircraft-class>
+    <aircraft-operator type="string"></aircraft-operator>
+
+    <tags> <!-- See: http://wiki.flightgear.org/Catalog_metadata#Supported_Tags -->
+      <tag>jet</tag>
+      <tag>2-engine</tag>
+      <tag>rembrandt</tag>
+      <tag>pressurized</tag>
+      <tag>retractable-gear</tag>
+      <tag>ifr</tag>
+      <tag>cessna</tag>
+      <tag>passenger</tag>
+      <tag>bizjet</tag>
+    </tags>
+
+    <view n="0">
+      <name>Captain</name>
+      <type>lookfrom</type>
+      <internal type="bool">true</internal>
+      <config>
+	<default-field-of-view-deg>70</default-field-of-view-deg>
+        <x-offset-m type="double">-0.3</x-offset-m>
+        <y-offset-m type="double">1.05</y-offset-m>
+        <z-offset-m type="double">3.3</z-offset-m>
+        <pitch-offset-deg>-15</pitch-offset-deg>
+        <limits>
+          <enabled type="bool">true</enabled>
+          <left>
+            <heading-max-deg type="double">120</heading-max-deg>
+            <x-offset-max-m type="double">0.05</x-offset-max-m>
+            <x-offset-threshold-deg type="double">45</x-offset-threshold-deg>
+          </left>
+          <right>
+            <heading-max-deg type="double">160</heading-max-deg>
+            <x-offset-max-m type="double">0.25</x-offset-max-m>
+            <x-offset-threshold-deg type="double">65</x-offset-threshold-deg>
+          </right>
+        </limits>
+      </config>
+    </view>
+
+    <view n="1">
+      <config>
+        <target-z-offset-m archive="y" type="double">6.7</target-z-offset-m>
+      </config>
+    </view>
+    <view n="2">
+      <config>
+        <target-z-offset-m archive="y" type="double">6.7</target-z-offset-m>
+      </config>
+    </view>
+    <view n="3">
+      <config>
+        <target-z-offset-m archive="y" type="double">6.7</target-z-offset-m>
+      </config>
+    </view>
+    <view n="4">
+      <config>
+        <target-z-offset-m archive="y" type="double">6.7</target-z-offset-m>
+      </config>
+    </view>
+    <view n="5">
+      <config>
+        <target-z-offset-m archive="y" type="double">6.7</target-z-offset-m>
+      </config>
+    </view>
+    <view n="6">
+      <config>
+        <target-z-offset-m archive="y" type="double">6.7</target-z-offset-m>
+      </config>
+    </view>
+    <view n="7">
+      <config>
+        <target-z-offset-m archive="y" type="double">0</target-z-offset-m>
+      </config>
+    </view>
+
+    <view n="100">
+      <name>Passenger 1</name>
+      <internal archive="y">true</internal>
+      <type>lookfrom</type>
+      <config>
+        <from-model type="bool">true</from-model>
+        <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+        <heading-offset-deg type="double">0</heading-offset-deg>
+        <x-offset-m archive="y" type="double">0.412</x-offset-m> <!--Right-->
+        <y-offset-m archive="y" type="double">0.888</y-offset-m> <!--Up-->
+        <z-offset-m archive="y" type="double">5.118</z-offset-m> <!--Back-->
+        <default-heading-offset-deg>0</default-heading-offset-deg>
+        <pitch-offset-deg>0</pitch-offset-deg>
+      </config>
+    </view>
+
+    <view n="101">
+      <name>Passenger 2</name>
+      <internal archive="y">true</internal>
+      <type>lookfrom</type>
+      <config>
+        <from-model type="bool">true</from-model>
+        <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+        <heading-offset-deg type="double">0</heading-offset-deg>
+        <x-offset-m archive="y" type="double">-0.412</x-offset-m> <!--Right-->
+        <y-offset-m archive="y" type="double">0.888</y-offset-m> <!--Up-->
+        <z-offset-m archive="y" type="double">7.212</z-offset-m> <!--Back-->
+        <default-heading-offset-deg>0</default-heading-offset-deg>
+        <pitch-offset-deg>0</pitch-offset-deg>
+      </config>
+    </view>
+
+    <view n="102">
+      <name>Copilot</name>
+      <internal archive="y">true</internal>
+      <type>lookfrom</type>
+      <config>
+	<default-field-of-view-deg>70</default-field-of-view-deg>
+        <from-model type="bool">true</from-model>
+        <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+        <heading-offset-deg type="double">0</heading-offset-deg>
+        <x-offset-m archive="y" type="double">0.3</x-offset-m> <!--Right-->
+        <y-offset-m archive="y" type="double">1.05</y-offset-m> <!--Up-->
+        <z-offset-m archive="y" type="double">3.3</z-offset-m> <!--Back-->
+        <pitch-offset-deg>-15</pitch-offset-deg>
+        <limits>
+          <enabled type="bool">true</enabled>
+          <left>
+            <heading-max-deg type="double">160</heading-max-deg>
+            <x-offset-max-m type="double">0.25</x-offset-max-m>
+            <x-offset-threshold-deg type="double">65</x-offset-threshold-deg>
+          </left>
+          <right>
+            <heading-max-deg type="double">120</heading-max-deg>
+            <x-offset-max-m type="double">0.05</x-offset-max-m>
+            <x-offset-threshold-deg type="double">45</x-offset-threshold-deg>
+          </right>
+        </limits>
+      </config>
+    </view>
+
+    <view n="103">
+      <name>Center Console</name>
+      <internal archive="y">true</internal>
+      <type>lookfrom</type>
+      <config>
+        <from-model type="bool">true</from-model>
+        <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+        <heading-offset-deg type="double">0</heading-offset-deg>
+        <x-offset-m archive="y" type="double">0.000</x-offset-m> <!--Right-->
+        <y-offset-m archive="y" type="double">0.850</y-offset-m> <!--Up-->
+        <z-offset-m archive="y" type="double">2.900</z-offset-m> <!--Back-->
+        <default-heading-offset-deg type="double">0</default-heading-offset-deg>
+        <pitch-offset-deg type="double">-85</pitch-offset-deg>
+	<default-field-of-view-deg type="double">60</default-field-of-view-deg>
+      </config>
+    </view>
+
+    <chase-distance-m type="double" archive="y">-20.0</chase-distance-m>
+
+    <systems>
+      <autopilot>
+        <path>Systems/Citation-autopilot.xml</path>
+      </autopilot>
+      <path>Systems/systems.xml</path>
+      <property-rule n="100">
+        <path>Models/Instruments/instrument-filters.xml</path>
+      </property-rule>
+      <property-rule n="101">
+        <path>Models/load-factor-filters.xml</path>
+      </property-rule>
+      <property-rule n="102">
+        <path>Models/Lights/average-ambient-light-filters.xml</path>
+      </property-rule>
+      <property-rule n="103">
+	<path>Systems/electrical.xml</path>
+      </property-rule>
+      <property-rule n="104">
+	<path>Models/Effects/flame-filter.xml</path>
+      </property-rule>
+      <wingflexer include="Systems/wingflexer-params.xml"/>
+      <property-rule n="105">
+	<name>wing flexer property rule</name>
+	<path>Aircraft/Generic/wingflexer.xml</path>
+      </property-rule>
+    </systems>
+
+    <sound>
+      <path>Aircraft/Citation/Citation-II-sound.xml</path>
+    </sound>
+    <hud>
+      <enable3d>false</enable3d>
+    </hud>
+    <virtual-cockpit archive="y">true</virtual-cockpit>
+    <allow-toggle-cockpit>true</allow-toggle-cockpit>
+    <yokes-visible type="bool">1</yokes-visible>
+
+    <airport>
+      <runways>
+        <start-offset-m>10</start-offset-m>
+      </runways>
+    </airport>
+
+    <rendering>  <!-- Set ALS Landing Lights -->
+      <als-secondary-lights>
+        <landing-light1-offset-deg>-6</landing-light1-offset-deg>
+        <landing-light2-offset-deg>6</landing-light2-offset-deg>
+      </als-secondary-lights>
+    </rendering>
+
+    <help>
+      <title>Cessna 550 Citation-II</title>
+      <!--<key>
+        <name>s</name>
+        <desc>Autostart</desc>
+      </key> -->
+      <key>
+        <name>y</name>
+        <desc>Show/Hide Yokes</desc>
+      </key>
+      <key>
+        <name>Shift+C</name>
+        <desc>Toggle auto-coordination</desc>
+      </key>
+      <key>
+        <name>Ctrl-d</name>
+        <desc>Open/close cabin-door</desc>
+      </key>
+      <key>
+	<name>l</name>
+	<desc>Toggle panel lights</desc>
+      </key>
+      <key>
+        <name>Ctrl-l</name>
+        <desc>Toggle landing lights</desc>
+      </key>
+      <key>
+	<name>m</name>
+	<desc>Toggle map-lights on/off</desc>
+      </key>
+      <key>
+	<name>b</name>
+	<desc>both brakes</desc>
+      </key>
+      <key>
+	<name>,</name>
+	<desc>left brakes</desc>
+      </key>
+      <key>
+	<name>.</name>
+	<desc>right brakes</desc>
+      </key>
+      <key>
+        <name>Delete</name>
+        <desc>Toggle thrust reversers (Citation II only)</desc>
+      </key>
+      <key>
+        <name>[ / ]</name>
+        <desc>Extend / retract flaps</desc>
+      </key>
+      <key>
+        <name>j / k</name>
+        <desc>Retract / Extend spoilers (N1 &lt; 85%)</desc>
+      </key>
+      <key>
+        <name>Ctrl-b</name>
+        <desc>Toggle speedbrakes</desc>
+      </key>
+      <line>Many features require power to operate. Make sure at least battery is switched on!</line>
+      <text>Ground Proximity Warning System: Use circuit breaker 'GROUND PROXI' on right circuit breaker panel to switch off warnings.
+
+      Autopilot operation:
+      Autopilot will disengage below decision height or 500ft above ground, whichever is highest.
+
+      FD OFF:         Illuminated=OFF. Engage wing leveler and pitch hold
+      HDG:              Follow heading bug
+      NAV:              Cycle between wing leveler, NAV1 or NAV2, and GPS
+      APR:               NAV1 lateral and glideslope
+      BC:                 Backcourse
+      NAV/HSI:        Toggle the HSI and autopilot between NAV1 and NAV2
+      ALT:                Altitude hold
+      ALT SEL:         (inoperative)
+      VNAV:            (inoperative)
+      V/S:                Hold vertical speed
+      IAS:                Autothrottle to hold current indicated airspeed
+                            (use ASI-knob to change speed)
+      PITCH wheel:  Adjust pitch, selected altitude or vertical speed
+
+      ---------------------------------------------------
+
+      To fold / unfold the passenger's tables, left or middle click respectively,
+      holding the button down as long as necessary to fold the elements. To stow
+      and unstow the folded table, left or middle-click on the cupholders.</text>
+    </help>
+
+    <weight n="0">
+      <name type="string">Frt Baggage</name>
+      <weight-lb type="double">0</weight-lb>
+      <max-lb type="int">350</max-lb>
+      <min-lb type="int">0</min-lb>
+    </weight>
+
+    <weight n="1">
+      <name type="string">Crew</name>
+      <weight-lb type="double">375</weight-lb>
+      <max-lb type="int">400</max-lb>
+      <min-lb type="int">100</min-lb>
+    </weight>
+
+    <weight n="2">
+      <name type="string">Passengers</name>
+      <weight-lb type="double">636</weight-lb>
+      <max-lb type="int">1200</max-lb>
+      <min-lb type="int">0</min-lb>
+    </weight>
+
+    <weight n="3">
+      <name type="string">Rear Baggage</name>
+      <weight-lb type="double">0</weight-lb>
+      <max-lb type="int">500</max-lb>
+      <min-lb type="int">0</min-lb>
+    </weight>
+
+    <menubar>
+      <default>
+        <menu n="10">
+          <label>Citation-II</label>
+          <enabled type="bool">true</enabled>
+          <item>
+            <label>Autostart</label>
+            <binding>
+              <command>property-toggle</command>
+              <property>sim/model/autostart</property>
+            </binding>
+          </item>
+          <item>
+            <label>Yokes On/Off [y]</label>
+            <binding>
+              <command>property-toggle</command>
+              <property>sim/yokes-visible</property>
+            </binding>
+          </item>
+          <item>
+            <label>Toggle human models</label>
+            <binding>
+              <command>property-toggle</command>
+              <property>controls/human-models</property>
+            </binding>
+          </item>
+          <item>
+            <label>Select Livery</label>
+            <binding>
+              <command>nasal</command>
+              <script>aircraft.livery.dialog.toggle()</script>
+            </binding>
+          </item>
+	  <item>
+            <label>Show Citation II wiki page in browser</label>
+            <binding>
+              <command>open-browser</command>
+              <path>http://wiki.flightgear.org/Cessna_550_Citation_II</path>
+            </binding>
+          </item>
+        </menu>
+      </default>
+    </menubar>
+
+    <instrumentation>
+      <path>Systems/instrumentation.xml</path>
+      <mk-viii>                           <!-- http://wiki.flightgear.org/index.php/GPWS -->
+        <serviceable>true</serviceable>   <!-- EGPWS_ENABLE -->
+	<configuration-module>
+	  <category-1>   1 </category-1>  <!-- AIRCRAFT_MODE_TYPE_SELECT -->
+	  <category-8>   3 </category-8>  <!-- RADIO_ALTITUDE_INPUT_SELECT -->
+	</configuration-module>
+	<inputs>                          <!-- Module I/O -->
+	  <arinc429>
+	    <decision-height-ncd> false </decision-height-ncd>
+	    <decision-height> 200 </decision-height>
+	  </arinc429>
+	</inputs>
+	<speaker>                         <!-- Speaker Configuration -->
+	  <volume> 0.4 </volume>          <!-- Volume at reference distance -->
+	</speaker>
+	<voice>
+	  <file-prefix type="string">Sounds/mk-viii/</file-prefix>
+                                         <!-- sound file path and prefix -->
+	</voice>
+      </mk-viii>
+    </instrumentation>
+
+    <multiplay>
+      <generic>
+        <int type="int" n="0" alias="/systems/electrical/outputs/strobe"/>
+        <int type="int" n="1" alias="/systems/electrical/outputs/beacon"/>
+        <int type="int" n="2" alias="/systems/electrical/outputs/nav-lights"/>
+        <int type="int" n="3" alias="/systems/electrical/outputs/landing-light[0]"/>
+        <int type="int" n="4" alias="/systems/electrical/outputs/landing-light[1]"/>
+        <int type="int" n="5" alias="/controls/lighting/recog-lights-left"/>
+        <int type="int" n="6" alias="/controls/lighting/recog-lights-right"/>
+        <float type="float" n="0" alias="/controls/cabin-door/position-norm"/>
+        <float type="float" n="1" alias="/sim/model/registration/red"/>
+        <float type="float" n="2" alias="/sim/model/registration/green"/>
+        <float type="float" n="3" alias="/sim/model/registration/blue"/>
+        <float type="float" n="4" alias="/surface-positions/reverser-norm"/>
+        <float type="float" n="5" alias="/surface-positions/reverser-norm[1]"/>
+        <float type="float" n="6" alias="/controls/baggage-door-front-left/position-norm"/>
+        <float type="float" n="7" alias="/controls/baggage-door-front-right/position-norm"/>
+        <float type="float" n="8" alias="/controls/baggage-door-aft/position-norm"/>
+        <float type="float" n="9" alias="/sim/weight[1]/weight-lb"/>
+        <float type="float" n="10" alias="/sim/weight[2]/weight-lb"/>
+        <string type="string" n="0" alias="/sim/multiplay/callsign"/>
+	<string type="string" n="1" alias="/sim/aircraft-version"/>
+	<!--string type="string" n="2" alias="/sim/description"/--> <!-- "Citation II" or "Sierra Super II" -->
+      </generic>
+      <sim>
+        <model>
+          <crew>
+            <pilot n="0">
+              <pose include="Models/Human/pose-pilot.xml"/>
+              <character>0</character>
+	      <gender>1</gender>
+	      <hair>1</hair>
+              <outfit>2</outfit>
+              <equipment>0</equipment>
+              <eyewear>1</eyewear>
+              <headgear>1</headgear>
+	    </pilot>
+            <pilot n="1">
+              <pose include="Models/Human/pose-copilot.xml"/>
+              <character>0</character>
+	      <gender>0</gender>
+	      <hair>1</hair>
+              <outfit>2</outfit>
+              <equipment>0</equipment>
+              <eyewear>1</eyewear>
+              <headgear>1</headgear>
+            </pilot>
+          </crew>
+        </model>
+      </sim>
+    </multiplay>
+
+    <flight-recorder>
+      <replay-config type="int">0</replay-config>
+      <config n="0" include="Aircraft/Generic/flightrecorder/generic-jet.xml">
+        <name>Citation II - Flight Recorder</name>
+	<signal><type>int</type><property type="string">/systems/electrical/outputs/strobe</property></signal>
+        <signal><type>int</type><property type="string">/systems/electrical/outputs/beacon</property></signal>
+        <signal><type>int</type><property type="string">/systems/electrical/outputs/nav-lights</property></signal>
+        <signal><type>int</type><property type="string">/systems/electrical/outputs/landing-light[0]</property></signal>
+        <signal><type>int</type><property type="string">/systems/electrical/outputs/landing-light[1]</property></signal>
+        <signal><type>int</type><property type="string">/controls/lighting/recog-lights-left</property></signal>
+        <signal><type>int</type><property type="string">/controls/lighting/recog-lights-right</property></signal>
+        <signal><type>float</type><property type="string">/controls/cabin-door/position-norm</property></signal>
+        <signal><type>float</type><property type="string">/surface-positions/reverser-norm</property></signal>
+        <signal><type>float</type><property type="string">/surface-positions/reverser-norm[1]</property></signal>
+        <signal><type>float</type><property type="string">/controls/baggage-door-front-left/position-norm</property></signal>
+        <signal><type>float</type><property type="string">/controls/baggage-door-front-right/position-norm</property></signal>
+        <signal><type>float</type><property type="string">/controls/baggage-door-aft/position-norm</property></signal>
+      </config>
+    </flight-recorder>
+
+    <aircraft-data> <!-- to be recorded for next time -->
+      <!-- dirty hack! The fuel levels didn't get reloaded, so in
+           Nasal/Citaion2.nas this gets read instead (l.135) and in turn 
+           updates every following frame (l.272). -->
+      <path>/consumables/fuel/fuel-gal_us-0</path>
+      <path>/consumables/fuel/fuel-gal_us-1</path>
+
+      <path>/sim/aircraft-class</path>
+      <path>/sim/aircraft-operator</path>
+      <path>/sim/dimensions/parkpos-offset-m</path>
+      <path>/sim/dimensions/radius-m</path>
+      <path>/sim/weight[0]/weight-lb</path>
+      <path>/sim/weight[1]/weight-lb</path>
+      <path>/sim/weight[2]/weight-lb</path>
+      <path>/sim/weight[3]/weight-lb</path>
+      <path>/controls/human-models</path>
+      <path>/instrumentation/comm/frequencies/selected-mhz</path>
+      <path>/instrumentation/comm/frequencies/standby-mhz</path>
+      <path>/instrumentation/comm/volume</path>
+      <path>/instrumentation/comm[1]/frequencies/selected-mhz</path>
+      <path>/instrumentation/comm[1]/frequencies/standby-mhz</path>
+      <path>/instrumentation/comm[1]/volume</path>
+      <path>/instrumentation/nav/frequencies/selected-mhz</path>
+      <path>/instrumentation/nav/frequencies/standby-mhz</path>
+      <path>/instrumentation/nav/volume</path>
+      <path>/instrumentation/nav[1]/frequencies/selected-mhz</path>
+      <path>/instrumentation/nav[1]/frequencies/standby-mhz</path>
+      <path>/instrumentation/nav[1]/volume</path>
+      <path>/instrumentation/adf/frequencies/selected-khz</path>
+      <path>/instrumentation/adf/frequencies/standby-khz</path>
+      <path>/instrumentation/adf/volume-norm</path>
+      <path>/instrumentation/adf[1]/frequencies/selected-khz</path>
+      <path>/instrumentation/adf[1]/frequencies/standby-khz</path>
+      <path>/instrumentation/adf[1]/volume-norm</path>
+      <path>/instrumentation/transponder/id-code</path>
+      <path>/instrumentation/transponder/inputs/knob-mode</path>
+      <path>/instrumentation/airspeed-indicator/index-marker</path>
+      <path>/instrumentation/clock/m877/mode-string</path>
+      <path>/instrumentation/dme/switch-position</path>
+      <path>/instrumentation/dme/switch-position[1]</path>
+      <path>/controls/electric/circuit-breakers/bus-battery-hot/cb-clock-left</path>
+      <path>/controls/electric/circuit-breakers/bus-battery-hot/cb-clock-right</path>
+      <path>/controls/electric/circuit-breakers/bus-emer/cb-light-emer</path>
+      <path>/controls/electric/circuit-breakers/bus-emer/cb-light-panel-el</path>
+      <path>/controls/electric/circuit-breakers/bus-emer/cb-light-panel-enginstr</path>
+      <path>/controls/electric/circuit-breakers/bus-emer/cb-light-panel-flood</path>
+      <path>/controls/electric/circuit-breakers/bus-emer[1]</path>
+      <path>/controls/electric/circuit-breakers/bus-left/cb-flap-ctl</path>
+      <path>/controls/electric/circuit-breakers/bus-left/cb-flap-motor</path>
+      <path>/controls/electric/circuit-breakers/bus-left/cb-gear-ctl</path>
+      <path>/controls/electric/circuit-breakers/bus-left/cb-light-beacon</path>
+      <path>/controls/electric/circuit-breakers/bus-left/cb-light-cabin-ind</path>
+      <path>/controls/electric/circuit-breakers/bus-left/cb-light-landing-left</path>
+      <path>/controls/electric/circuit-breakers/bus-left/cb-light-panel-center</path>
+      <path>/controls/electric/circuit-breakers/bus-left/cb-light-panel-left</path>
+      <path>/controls/electric/circuit-breakers/bus-left/cb-light-recog-left</path>
+      <path>/controls/electric/circuit-breakers/bus-left/cb-light-strobe</path>
+      <path>/controls/electric/circuit-breakers/bus-left/cb-light-winginsp</path>
+      <path>/controls/electric/circuit-breakers/bus-left/cb-pitch-trim</path>
+      <path>/controls/electric/circuit-breakers/bus-left/cb-speedbrakes</path>
+      <path>/controls/electric/circuit-breakers/bus-left/cb-start-left</path>
+      <path>/controls/electric/circuit-breakers/bus-left/cb-thrust-reverser-left</path>
+      <path>/controls/electric/circuit-breakers/bus-left-1</path>
+      <path>/controls/electric/circuit-breakers/bus-left-2</path>
+      <path>/controls/electric/circuit-breakers/bus-left-3</path>
+      <path>/controls/electric/circuit-breakers/bus-right/cb-ground-prox</path>
+      <path>/controls/electric/circuit-breakers/bus-right/cb-light-cabin-read</path>
+      <path>/controls/electric/circuit-breakers/bus-right/cb-light-landing-right</path>
+      <path>/controls/electric/circuit-breakers/bus-right/cb-light-nav</path>
+      <path>/controls/electric/circuit-breakers/bus-right/cb-light-panel-right</path>
+      <path>/controls/electric/circuit-breakers/bus-right/cb-light-recog-right</path>
+      <path>/controls/electric/circuit-breakers/bus-right/cb-start-right</path>
+      <path>/controls/electric/circuit-breakers/bus-right/cb-thrust-reverser-right</path>
+      <path>/controls/electric/circuit-breakers/bus-right-1</path>
+      <path>/controls/electric/circuit-breakers/bus-right-2</path>
+      <path>/controls/electric/circuit-breakers/bus-right-3</path>
+      <path>/sim/yokes-visible</path>
+      <path>/controls/seat/armrests-pos</path>
+    </aircraft-data>
+
+    <checklists>
+      <checklist include="Checklists/engine_startup.xml"/>
+      <checklist include="Checklists/before_takeoff.xml"/>
+      <checklist include="Checklists/takeoff.xml"/>
+      <checklist include="Checklists/initial_climb.xml"/>
+      <checklist include="Checklists/stepped_climb.xml"/>
+    </checklists>
+  </sim>
+
+  <consumables>
+    <fuel>
+      <!-- Here we specify the unusable part of the tanks, see also Citation-II-yasim.xml
+           for the maximum weight of fuel which determines the total capacity. -->
+      <tank n="0">
+        <!-- <capacity-gal_us type="double">371</capacity-gal_us> -->
+        <unusable-gal_us type="double">4.92</unusable-gal_us>
+      </tank>
+      <tank n="1">
+        <!-- <capacity-gal_us type="double">371</capacity-gal_us> -->
+        <unusable-gal_us type="double">4.92</unusable-gal_us>
+      </tank>
+    </fuel>
+  </consumables>
+
+  <!-- aircraft specific loading -->
+
+  <controls>
+    <human-models type="bool">1</human-models>
+    <gear>
+      <brake-parking type="bool">1</brake-parking>
+      <brake-left type="double">0.0</brake-left>
+      <brake-right type="double">0.0</brake-right>
+    </gear>
+    <engines>
+      <engine n="0">
+        <magnetos>3</magnetos>
+      </engine>
+      <engine n="1">
+        <magnetos>3</magnetos>
+      </engine>
+    </engines>
+    <flight>
+      <speedbrake-switch type="bool">0</speedbrake-switch>
+    </flight>
+    <electric>
+      <avionics-switch type="bool">0</avionics-switch>
+      <battery-switch type="bool">0</battery-switch>
+      <battery-bus-switch type="int">0</battery-bus-switch>
+      <voltage-sel type="int">0</voltage-sel>
+      <system-test type="int">10</system-test>
+      <fuel-sel type="int">0</fuel-sel>
+      <fuel>
+	<tank n="0">
+	  <boost-pump-switch type="int">0</boost-pump-switch>
+	</tank>
+	<tank n="1">
+	  <boost-pump-switch type="int">0</boost-pump-switch>
+	</tank>
+      </fuel>
+      <circuit-breakers>
+	<bus-emer type="bool" n="1">1</bus-emer> <!-- has no model, it's located in J-Box -->
+	<bus-left-1 type="bool">1</bus-left-1>
+	<bus-left-2 type="bool">1</bus-left-2>
+	<bus-left-3 type="bool">1</bus-left-3>
+	<bus-right-1 type="bool">1</bus-right-1>
+	<bus-right-2 type="bool">1</bus-right-2>
+	<bus-right-3 type="bool">1</bus-right-3>
+	<bus-battery-hot>
+	  <cb-clock-left type="bool">1</cb-clock-left>
+	  <cb-clock-right type="bool">1</cb-clock-right>
+	</bus-battery-hot>
+        <bus-emer n="0">
+	  <cb-light-emer type="bool">1</cb-light-emer>
+	  <cb-light-panel-el type="bool">1</cb-light-panel-el>
+	  <cb-light-panel-enginstr type="bool">1</cb-light-panel-enginstr>
+	  <cb-light-panel-flood type="bool">1</cb-light-panel-flood>
+        </bus-emer>
+        <bus-left>
+          <cb-light-panel-left type="bool">1</cb-light-panel-left>
+	  <cb-light-panel-center type="bool">1</cb-light-panel-center>
+	  <cb-light-beacon type="bool">1</cb-light-beacon>
+	  <cb-light-landing-left type="bool">1</cb-light-landing-left> <!-- has no model, it's located in J-Box -->
+	  <cb-light-strobe type="bool">1</cb-light-strobe>
+	  <cb-light-recog-left type="bool">1</cb-light-recog-left> <!-- has no model, it's located in J-Box -->
+	  <cb-light-winginsp type="bool">1</cb-light-winginsp>
+	  <cb-light-cabin-ind type="bool">1</cb-light-cabin-ind> <!-- has no model, it's located in J-Box -->
+	  <cb-speedbrakes type="bool">1</cb-speedbrakes>
+	  <cb-pitch-trim type="bool">1</cb-pitch-trim>
+	  <cb-gear-ctl type="bool">1</cb-gear-ctl>
+	  <cb-flap-ctl type="bool">1</cb-flap-ctl>
+	  <cb-flap-motor type="bool">1</cb-flap-motor>
+	  <cb-thrust-reverser-left type="bool">1</cb-thrust-reverser-left>
+	  <cb-start-left type="bool">1</cb-start-left>
+        </bus-left>
+        <bus-right>
+	  <cb-light-panel-right type="bool">1</cb-light-panel-right>
+	  <cb-light-nav type="bool">1</cb-light-nav>
+	  <cb-light-landing-right type="bool">1</cb-light-landing-right> <!-- has no model, it's located in J-Box -->
+	  <cb-light-recog-right type="bool">1</cb-light-recog-right> <!-- has no model, it's located in J-Box -->
+	  <cb-light-cabin-read type="bool">1</cb-light-cabin-read> <!-- has no model, it's located elsewhere -->
+	  <cb-thrust-reverser-right type="bool">1</cb-thrust-reverser-right>
+	  <cb-start-right type="bool">1</cb-start-right>
+	  <cb-ground-prox type="bool">1</cb-ground-prox>
+        </bus-right>
+      </circuit-breakers>
+    </electric>
+    <lighting>
+      <panel-norm type="double">0.5</panel-norm>
+      <instrument-lights-norm type="double">0.5</instrument-lights-norm>
+      <left-panel-norm type="double">0.5</left-panel-norm>
+      <center-panel-norm type="double">0.5</center-panel-norm>
+      <right-panel-norm type="double">0.5</right-panel-norm>
+      <map-lights type="bool">0</map-lights>
+      <panel-lights-switch type="bool">0</panel-lights-switch>
+      <flood-light-norm type="double">0.0</flood-light-norm>
+      <left-panel-light-emission type="double">0.0</left-panel-light-emission>
+      <center-panel-light-emission type="double">0.0</center-panel-light-emission>
+      <right-panel-light-emission type="double">0.0</right-panel-light-emission>
+      <instrument-lights-emission type="double">0.0</instrument-lights-emission>
+      <map-lights-emission type="double">0.0</map-lights-emission>
+      <flightdeck-average-ambient-light type="double">0.0</flightdeck-average-ambient-light>
+      <flightdeck-average-ambient-light-center-console type="double">0.0</flightdeck-average-ambient-light-center-console>
+      <flightdeck-average-ambient-light-environment type="double">0.0</flightdeck-average-ambient-light-environment>
+      <flightdeck-average-instrument-emission type="double">0.0</flightdeck-average-instrument-emission>
+      <panel-average-lighting type="double">0.0</panel-average-lighting>
+    </lighting>
+    <baggage-door-front-left n="0">
+      <command type="bool">0</command>
+      <position-norm type="double">0</position-norm>
+    </baggage-door-front-left>
+    <baggage-door-front-right n="0">
+      <command type="bool">0</command>
+      <position-norm type="double">0</position-norm>
+    </baggage-door-front-right>
+    <baggage-door-aft n="0">
+      <command type="bool">0</command>
+      <position-norm type="double">0</position-norm>
+    </baggage-door-aft>
+    <seat> <!-- the pilot and copilot seats -->
+      <armrests type="bool">0</armrests>
+      <armrests-pos type="double">0</armrests-pos>
+    </seat>
+    <table n="0"/>
+    <table n="1"> <!-- between forward seats -->
+      <in-position-deg type="double">0</in-position-deg>
+      <out-position-deg type="double">0</out-position-deg>
+      <slide-position-m type="double">0</slide-position-m>
+    </table>
+    <table n="2"> <!-- between rear right -->
+      <in-position-deg type="double">0</in-position-deg>
+      <out-position-deg type="double">0</out-position-deg>
+      <slide-position-m type="double">0</slide-position-m>
+    </table>
+    <table n="3"> <!-- between rear left -->
+      <in-position-deg type="double">0</in-position-deg>
+      <out-position-deg type="double">0</out-position-deg>
+      <slide-position-m type="double">0</slide-position-m>
+    </table>
+  </controls>
+
+  <engines>
+    <engine n="0">
+      <rpm>1000</rpm>
+      <reverser-position type="double">0.000000</reverser-position>
+    </engine>
+    <engine n="1">
+      <rpm>1000</rpm>
+      <reverser-position type="double">0.000000</reverser-position>
+    </engine>
+  </engines>
+
+  <instrumentation>
+    <cdu>
+      <input type="string"/>
+      <serviceable type="bool">false</serviceable>
+    </cdu>
+    <dme>
+      <frequencies>
+        <source type="string">/instrumentation/nav[0]/frequencies/selected-mhz</source>
+      </frequencies>
+      <switch-position n="0" type="int">0</switch-position>
+      <switch-position n="1" type="int">0</switch-position>
+    </dme>
+    <inst-vertical-speed-indicator>
+      <serviceable type="bool">1</serviceable>
+    </inst-vertical-speed-indicator>
+    <altimeter>
+      <decision-height type="double">200</decision-height>
+    </altimeter>
+    <airspeed-indicator>
+      <index-marker type="double">220</index-marker>
+    </airspeed-indicator>
+    <fmc>
+      <vspeeds>
+        <V1 type="double">110</V1>
+        <VR type="double">120</VR>
+        <V2 type="double">130</V2>
+      </vspeeds>
+    </fmc>
+    <rmi>
+      <single-needle>
+        <selected-input type="string">ADF</selected-input>
+        <position-deg type="double"/>
+        <!-- computed by a filter, see Models/Instruments/instrument-filters.xml -->
+      </single-needle>
+      <double-needle>
+        <selected-input type="string">VOR</selected-input>
+        <position-deg type="double"/>
+      </double-needle>
+    </rmi>
+    <hsi n="0">
+      <selected-nav type="int">0</selected-nav> <!-- pilot's HSI initially uses NAV1 -->
+      <volts type="double">0</volts>
+    </hsi>
+    <hsi n="1">
+      <selected-nav type="int">1</selected-nav> <!-- copilot's HSI initially uses NAV2 -->
+      <volts type="double">0</volts>
+    </hsi>
+  </instrumentation>
+
+  <autopilot>
+    <locks>
+      <yaw-damper type="bool">0</yaw-damper>
+      <passive-mode type="bool">1</passive-mode>
+      <heading/>
+      <altitude/>
+    </locks>
+    <settings>
+      <bank-limit type="double">27</bank-limit>
+      <vertical-speed-fpm type="double">0</vertical-speed-fpm>
+      <target-altitude-ft>10000</target-altitude-ft>
+      <gs1-arm type="bool">0</gs1-arm>
+      <alt-arm type="bool">0</alt-arm>
+      <target-speed-kt alias="/instrumentation/airspeed-indicator/index-marker"/>
+    </settings>
+  </autopilot>
+
+  <nasal>
+    <cdu>
+      <file>Aircraft/Instruments-3d/cdu/boeing.nas</file>
+    </cdu>
+    <citation>
+      <file>Nasal/Electrical.nas</file>
+      <file>Nasal/citation2.nas</file>
+      <file>Aircraft/Generic/limits.nas</file>
+      <file>Nasal/rain.nas</file>
+    </citation>
+    <m877>
+      <file>Aircraft/Instruments-3d/clock/M877/M877.nas</file>
+    </m877>
+    <tyresmoke>
+      <file>Aircraft/Citation/Nasal/tyresmoke.nas</file>
+    </tyresmoke>
+  </nasal>
+
+  <input>
+    <keyboard>
+      <!-- <key n="115">
+        <name>s</name>
+        <desc>toggle autostart</desc>
+        <binding>
+          <command>property-toggle</command>
+          <property>sim/model/autostart</property>
+        </binding>
+      </key> -->
+      <key n="12">
+        <name>Ctrl-L</name>
+        <desc>Toggle landing lights</desc>
+        <binding>
+          <command>property-toggle</command>
+          <property>controls/lighting/landing-light-switch</property>
+        </binding>
+        <binding>
+          <command>property-toggle</command>
+          <property>controls/lighting/landing-light-switch[1]</property>
+        </binding>
+      </key>
+      <key n="121">
+        <name>y</name>
+        <desc>Show/Hide Yokes</desc>
+        <binding>
+          <command>property-toggle</command>
+          <property>sim/yokes-visible</property>
+        </binding>
+      </key>
+      <key n="127">
+        <name>Delete</name>
+        <desc>Toggle Reversers</desc>
+        <binding>
+	  <condition>
+	    <and>
+	      <property>controls/electric/circuit-breakers/bus-left/cb-thrust-reverser-left</property>
+	      <greater-than>
+		<property>systems/electrical/outputs/bus/left</property>
+		<value>20</value>
+	      </greater-than>
+	    </and>
+	  </condition>
+          <command>property-toggle</command>
+          <property>controls/engines/engine[0]/reverser</property>
+        </binding>
+        <binding>
+	  <condition>
+	    <and>
+	      <property>controls/electric/circuit-breakers/bus-right/cb-thrust-reverser-right</property>
+	      <greater-than>
+		<property>systems/electrical/outputs/bus/right</property>
+		<value>20</value>
+	      </greater-than>
+	    </and>
+	  </condition>
+          <command>property-toggle</command>
+          <property>controls/engines/engine[1]/reverser</property>
+        </binding>
+      </key>
+      <key n="4">
+        <name>Ctrl-d</name>
+        <desc>Open/close cabin-door</desc>
+        <binding>
+          <condition>
+            <less-than>
+              <property>velocities/airspeed-kt</property>
+              <value>40</value>
+            </less-than>
+          </condition>
+          <command>nasal</command>
+          <script>citation.cabin_door.toggle();</script>
+        </binding>
+      </key>
+      <key n="2">
+	<name>Ctrl-b</name>
+	<desc>toggle speed brakes</desc>
+	<binding>
+	  <command>property-toggle</command>
+	  <property>controls/flight/speedbrake-switch</property>
+	</binding>
+      </key>
+      <key n="67">
+        <name>C</name>
+        <binding>
+          <command>property-toggle</command>
+          <property>controls/flight/auto-coordination</property>
+        </binding>
+      </key>
+      <key n="106">
+        <name>j</name>
+        <desc>Retract spoilers</desc>
+        <binding>
+          <command>property-assign</command>
+          <property>controls/flight/speedbrake-switch</property>
+          <value>0</value>
+        </binding>
+      </key>
+      <key n="107">
+        <name>k</name>
+        <desc>Deploy spoilers</desc>
+        <binding>
+          <command>property-assign</command>
+          <property>controls/flight/speedbrake-switch</property>
+          <value>1</value>
+        </binding>
+      </key>
+      <key n="108">
+	<name>l</name>
+	<desc>toggle panel lights</desc>
+	<binding>
+          <command>property-toggle</command>
+          <property>controls/lighting/panel-lights-switch</property>
+        </binding>
+      </key>
+      <key n="109">
+	<name>m</name>
+	<desc>toggle map lights</desc>
+	<binding>
+          <command>property-toggle</command>
+          <property>controls/lighting/map-lights</property>
+        </binding>
+      </key>
+    </keyboard>
+  </input>
+
+  <limits>
+    <mass-and-balance>
+      <maximum-takeoff-mass-lbs>14100</maximum-takeoff-mass-lbs>
+      <maximum-landing-mass-lbs type="double">13500</maximum-landing-mass-lbs>
+    </mass-and-balance>
+    <max-flap-extension-speed>
+      <flaps type="double">0.324</flaps>
+      <speed type="double">202</speed>
+    </max-flap-extension-speed>
+    <max-flap-extension-speed>
+      <flaps type="double">0.99</flaps>
+      <speed type="double">176</speed>
+    </max-flap-extension-speed>
+    <max-gear-extension-speed type="double">262</max-gear-extension-speed>
+    <max-negative-g type="double">-1.52</max-negative-g> <!-- 0.0 if flaps down -->
+    <max-positive-g type="double">3.8</max-positive-g> <!-- 2.0 if flaps down -->
+    <vne type="double">263</vne> <!-- indicated airspeed in knots -->
+  </limits>
+
+  <systems>
+    <electrical>
+      <outputs>
+	<suppliers>
+	  <battery type="double">24</battery>
+	  <alternator n="0" alias="/engines/engine/amp-v" />
+	  <alternator n="1" alias="/engines/engine[1]/amp-v" />
+	  <external type="double">0</external>
+	</suppliers>
+	<bus>
+	  <battery-hot alias="/systems/electrical/outputs/suppliers/battery" />
+	  <battery type="double">0</battery>
+	  <left type="double">0</left>
+	  <right type="double">0</right>
+	  <emer type="double">0</emer>
+	</bus>
+      </outputs>
+    </electrical>
+  </systems>
+
+</PropertyList>

@@ -1,0 +1,14 @@
+https://www.easa.europa.eu/sites/default/files/dfu/EASA%20IM%20A%20207%20Cessna%20500_550_S550_560_560XL%20Iss%205.pdf
+https://en.wikipedia.org/wiki/Cessna_Citation_II
+https://www.dgac.gob.cl/wp-content/uploads/portalweb/rest-portalweb/jcr/repository/collaboration/sites%20content/live/dgac/documents/CCBravo-C550-r.pdf
+http://all-aero.com/index.php/contactus/59-planes-b-c/2289-cessna-ce-550-citation-ii-bravo-t-47a
+http://www.smartcockpit.com/docs/Cessna_Citation_Bravo-Limitations_(AFM).pdf
+https://assets.publishing.service.gov.uk/media/5422f289e5274a13140003ed/dft_avsafety_pdf_502229.pdf
+http://www.dept.aoe.vt.edu/~mason/Mason_f/CessnaCitationIIBravo.pdf
+http://www.ingaero.uniroma1.it/users/ingaero/joomla/attachments/683_filippone.pdf
+https://www.easa.europa.eu/sites/default/files/dfu/EASA%20IM%20A%20207%20Cessna%20500_550_S550_560_560XL%20Iss%205.pdf
+https://www.faa.gov/about/office_org/headquarters_offices/ang/offices/tc/about/campus/faa_host/labs/simulation_team/tgf/media/AircraftModelingTool.pdf
+https://www.forecastinternational.com/archive/disp_pdf.cfm?DACH_RECNO=925
+http://www.smartcockpit.com/docs/CESSNA_Citation_Bravo-Flight_Controls.pdf
+http://www.smartcockpit.com/docs/CESSNA_Citation_Bravo-Landing_Gear_and_Brakes.pdf
+http://www.aerofiles.com/airfoils.html -> Airfoil: NACA 23014 at root NACA 23012 at tip

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<system name="C550: Bleed"> 
+	<!-- System:
+		Bleed source: 	NORM:	bleed from both engines, 2*6 PPM = 12 PPM
+				LH:	bleed from left engine, 6 PPM
+				RH:	bleed from right engine, 6 PPM
+				OFF:	no bleed
+				GND:	bleed from right engine, 18 PPM, ground valve open		(inhibited in air by left wow switch)
+				EMERG:	left engine bleed air direct into the cabin
+		ACM (Air Cycle Machine):	* cools bleed air
+						* mixes cooleed air with hot bleed air to provide temperature control
+	-->
+	
+</system>

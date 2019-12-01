@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+************************************************************************
+Cessna Citation II (550) simulation config. This files ties together
+all the components used by FGFS to represent the 550. Components
+include the flight data model, instrument panel, and external 3D model.
+
+November 14 2004  Curtis L. Olson  http://www.flightgear.org/~curt
+************************************************************************
+-->
+<PropertyList include="Citation-II-common.xml">
+  <sim>
+    <primary-set type="bool">true</primary-set>
+    <aero>Citation-II-yasim</aero>
+    <description>Cessna 550/551 Citation II</description>
+    <long-description>
+      The Cessna 550/551 Citation II is a light corporate jet built
+      between 1978 and 2006.  The FlightGear model is a luxury
+      corporate jet for two pilots and seven passengers.  The cabin
+      features a lavatory for long flights.  At full takeoff weight,
+      typical cruise speed is 330 KTAS at FL370; range is 1900 nmi.
+
+      The Cessna 550 requires two pilots; the 551 is the same aircraft
+      certified for single-pilot use.
+
+      Later variants of this aircraft include the Cessna Citation
+      Bravo, which has newer avionics (available separately in
+      FlightGear), the Cessna Citation S/II with improved wings (not
+      currently available in FlightGear), and the Sierra Super II,
+      available together with this aircraft in FlightGear.
+    </long-description>
+    <fr>
+      <long-description>
+        Le Cessna 550/551 Citation II est un jet d'affaires léger
+        construit entre 1978 et 2006.  Dans FlightGear, il est aménagé
+        luxueusement pour deux pilotes et sept passagers.  Il y a des
+        toilettes à l'arrière de la cabine pour les longs vols.  Après
+        un décollage à la masse maximale autorisée, la vitesse de
+        croisière habituelle est de 330 noeuds au FL370; le rayon
+        d'action est de 1900 nautiques.
+
+        Le Cessna 550 requiert deux pilotes; le 551 est le même avion
+        mais certifié pour un seul pilote.
+
+        Certaines variantes de cet appareil sont apparues: le Cessna
+        Citation Bravo (disponible séparément dans FlightGear), le
+        Cessna Citation S/II avec une voilure améliorée (non
+        disponible dans FlightGear), et le Sierra Super II, livré dans
+        FlightGear avec cet avion.
+      </long-description>
+    </fr>
+    <de>
+      <long-description>
+        Die Cessna 550/551 Citation II ist ein leichtes Geschäfts-
+        flugzeug, daß zwischen 1978 und 2006 gebaut wurde. Das
+        FlightGear Modell ist ein Luxusgeschäftsflugzeug für zwei
+        Piloten und sieben Passagiere. Die Kabine hat für lange Flüge
+        eine Toilette. Bei vollem Startgewicht beträgt die typische
+        Reisegschwindigkeit 330 KTAS bei FL370; die Reichweite
+        beträgt 1900 nautische Meilen.
+
+        Die Cessna 550 benötigt 2 Piloten; die 551 ist das selbe
+        Flugzeug, zertifiziert für einen Piloten.
+
+        Spätere Varianten dieses Flugzeugs sind z.Bsp. die Citation
+        Bravo, welche neuere Fluginstrumente enthält (für FlightGear
+        erhältlich), die Cessna Citation S/II mit verbesserten
+        Flügeln (nicht verfügbar für FlightGear), und die Sierra
+        Super II, verfügbar für FlightGear mit diesem Flugzeug.
+      </long-description>
+    </de>
+
+    <model>
+      <variant type="int">0</variant> <!-- transmitted over multiplayer -->
+      <fallback-model-index type="int">104</fallback-model-index>
+    </model>
+  </sim>
+
+  <autopilot>
+    <limits>
+      <!-- the number and ordering of these properties is important for the autopilot;
+           see Citation-autopilot.xml, AP vertical stage 1. -->
+      <max-climb-rate-fpm type="double">3000</max-climb-rate-fpm>
+      <indicated-altitude-ft type="double">10000</indicated-altitude-ft>
+      <max-climb-rate-fpm type="double">2000</max-climb-rate-fpm>
+      <indicated-altitude-ft type="double">18500</indicated-altitude-ft>
+      <max-climb-rate-fpm type="double">1500</max-climb-rate-fpm>
+      <indicated-altitude-ft type="double">25000</indicated-altitude-ft>
+      <max-climb-rate-fpm type="double">1000</max-climb-rate-fpm>
+      <indicated-altitude-ft type="double">32000</indicated-altitude-ft>
+      <max-climb-rate-fpm type="double">750</max-climb-rate-fpm>
+      <indicated-altitude-ft type="double">36000</indicated-altitude-ft>
+
+      <max-climb-rate-fpm type="double">500</max-climb-rate-fpm>
+    </limits>
+  </autopilot>
+  <instrumentation>
+    <cdu>
+      <display>IDENT</display>
+      <ident>
+        <model>Citation II</model>
+        <engines>PWC JT15D-4</engines>
+      </ident>
+    </cdu>
+  </instrumentation>
+</PropertyList>

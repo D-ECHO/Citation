@@ -1,0 +1,350 @@
+<PropertyList>
+
+  <path>hsi.ac</path>
+
+  <effect>
+    <condition>
+      <greater-than>
+        <property>sim/version/flightgear</property>
+        <value>3.4.999</value>
+      </greater-than>
+    </condition>
+    <inherits-from>Aircraft/Citation/Models/Effects/interior-shadow/citationII-interior-flightdeck</inherits-from>
+    <object-name>HSI</object-name>
+    <object-name>HSI.card</object-name>
+    <object-name>HSI.crs1</object-name>
+    <object-name>HSI.crs10</object-name>
+    <object-name>HSI.crs100</object-name>
+    <object-name>HSI.crsdeflection</object-name>
+    <object-name>HSI.crsknob</object-name>
+    <object-name>HSI.crsneedle</object-name>
+    <object-name>HSI.dst0</object-name>
+    <object-name>HSI.dst1</object-name>
+    <object-name>HSI.dst10</object-name>
+    <object-name>HSI.dst100</object-name>
+    <object-name>HSI.dstoff</object-name>
+    <object-name>HSI.face</object-name>
+    <object-name>HSI.hdgbug</object-name>
+    <object-name>HSI.hdgknob</object-name>
+    <object-name>HSI.navbrg</object-name>
+    <object-name>HSI.Plane.137</object-name>
+    <object-name>HSI.fromflag</object-name>
+    <object-name>HSI.gsneedle</object-name>
+    <object-name>HSI.navflag</object-name>
+    <object-name>HSI.toflag</object-name>
+  </effect>
+
+  <animation>
+    <type>select</type>
+    <object-name>HSI.dstoff</object-name>
+    <condition>
+      <property alias="../../../power"/>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>HSI.dst100</object-name>
+    <object-name>HSI.dst10</object-name>
+    <object-name>HSI.dst1</object-name>
+    <object-name>HSI.dst0</object-name>
+    <condition>
+      <and>
+        <property alias="../../../../power"/>
+        <property alias="../../../../inputs/in-range"/>
+      </and>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>HSI.navflag</object-name>
+    <condition>
+      <or>
+        <not>
+          <property alias="../../../../../power"/>
+        </not>
+        <not>
+          <property alias="../../../../../inputs/in-range"/>
+        </not>
+      </or>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>HSI.toflag</object-name>
+    <condition>
+      <property alias="../../../inputs/to-flag"/>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>HSI.fromflag</object-name>
+    <condition>
+      <property alias="../../../inputs/from-flag"/>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>HSI.card</object-name>
+    <object-name>HSI.crsneedle</object-name>
+    <object-name>HSI.crsdeflection</object-name>
+    <object-name>HSI.toflag</object-name>
+    <object-name>HSI.fromflag</object-name>
+    <object-name>HSI.hdgbug</object-name>
+    <property alias="../../heading-deg"/>
+    <axis>
+      <x>1.0</x>
+      <y>0.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>HSI.crsneedle</object-name>
+    <object-name>HSI.crsdeflection</object-name>
+    <object-name>HSI.toflag</object-name>
+    <object-name>HSI.fromflag</object-name>
+    <property alias="../../inputs/radials/selected-filtered-deg"/>
+    <axis>
+      <x>-1.0</x>
+      <y>0.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>translate</type>
+    <object-name>HSI.crsdeflection</object-name>
+    <property alias="../../loc-deflection"/>
+    <interpolation>
+      <entry><ind>-1.0</ind><dep>-0.0117</dep></entry>
+      <entry><ind>1.0</ind><dep>0.0117</dep></entry>
+    </interpolation>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>HSI.hdgbug</object-name>
+    <property>autopilot/settings/heading-bug-deg</property>
+    <axis>
+      <x>-1.0</x>
+      <y>0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>HSI.navbrg</object-name>
+    <property alias="../../bearing-deg"/>
+    <axis>
+      <x>-1.0</x>
+      <y>0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>translate</type>
+    <object-name>HSI.gsneedle</object-name>
+    <property alias="../../gs-deflection"/>
+    <interpolation>
+      <entry><ind>-0.8</ind><dep>-0.0133</dep></entry>
+      <entry><ind>0.0</ind><dep>0.0</dep></entry>
+      <entry><ind>0.8</ind><dep>0.0133</dep></entry>
+    </interpolation>
+    <axis>
+      <x>0</x>
+      <y>0</y>
+      <z>1</z>
+    </axis>
+  </animation>
+
+  <!-- CRS text-->
+
+  <animation>
+    <type>select</type>
+    <object-name>HSI.crs100</object-name>
+    <object-name>HSI.crs10</object-name>
+    <object-name>HSI.crs1</object-name>
+    <condition>
+      <property alias="../../../power"/>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>HSI.crs100</object-name>
+    <property alias="../../inputs/radials/selected-deg"/>
+    <factor>0.001</factor>
+    <step>100</step>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>HSI.crs10</object-name>
+    <property alias="../../inputs/radials/selected-deg"/>
+    <factor>0.01</factor>
+    <step>10</step>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>HSI.crs1</object-name>
+    <property alias="../../inputs/radials/selected-deg"/>
+    <factor>0.1</factor>
+    <step>1</step>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <!-- DISTC text-->
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>HSI.dst100</object-name>
+    <property alias="../../inputs/nav-distance"/>
+    <factor>0.000000539956803</factor>
+    <step>185200</step>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>HSI.dst10</object-name>
+    <property alias="../../inputs/nav-distance"/>
+    <factor>0.00000539956803</factor>
+    <step>18520</step>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>HSI.dst1</object-name>
+    <property alias="../../inputs/nav-distance"/>
+    <factor>0.0000539956803</factor>
+    <step>1852</step>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>HSI.dst0</object-name>
+    <property alias="../../inputs/nav-distance"/>
+    <factor>0.000539956803</factor>
+    <step>185.2</step>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>knob</type>
+    <object-name>HSI.crsknob</object-name>
+    <property alias="../../inputs/radials/selected-filtered-deg"/>
+    <factor>2</factor>
+    <center>
+      <x-m>0</x-m>
+      <y-m>-0.044</y-m>
+      <z-m>-0.034</z-m>
+    </center>
+    <axis>
+      <x>-1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <action>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../inputs/radials/selected-deg"/>
+        <factor>1</factor>
+        <min>0</min>
+        <max>360</max>
+        <wrap>true</wrap>
+      </binding>
+    </action>
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>hsi-crs</tooltip-id>
+        <label>HSI: Course: %3d</label>
+        <mapping>heading</mapping>
+        <property alias="../../../../inputs/radials/selected-deg"/>
+      </binding>
+    </hovered>
+  </animation>
+
+  <animation>
+    <type>knob</type>
+    <object-name>HSI.hdgknob</object-name>
+    <property>autopilot/settings/heading-bug-deg</property>
+    <factor>2</factor>
+    <center>
+      <x-m>0</x-m>
+      <y-m>0.043</y-m>
+      <z-m>-0.034</z-m>
+    </center>
+    <axis>
+      <x>-1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <action>
+      <binding>
+        <command>property-adjust</command>
+        <property>autopilot/settings/heading-bug-deg</property>
+        <factor>1</factor>
+        <min>0</min>
+        <max>360</max>
+        <wrap>true</wrap>
+      </binding>
+    </action>
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>hsi-hdg</tooltip-id>
+        <label>HSI: Heading: %3d</label>
+        <mapping>heading</mapping>
+        <property>autopilot/settings/heading-bug-deg</property>
+      </binding>
+    </hovered>
+  </animation>
+
+</PropertyList>
