@@ -178,26 +178,43 @@
 		</summer>
 	</channel>
 	<channel name="Thrust Reverse">
-		<pure_gain name="Thrust Reverse Position">
+		<pure_gain>
 			<input>/controls/engines/engine[0]/reverser-real</input>
 			<gain>2.0</gain>
-			<output>systems/reverser/reverser-pos-norm</output>
+			<output>systems/reverser/reverser-pos-norm[0]</output>
+		</pure_gain>
+		<pure_gain>
+			<input>/controls/engines/engine[0]/reverser-real</input>
+			<gain>2.0</gain>
+			<output>systems/reverser/reverser-pos-norm[1]</output>
 		</pure_gain>
 		<switch name="systems/hydraulic/reverser-pressure-requested">
 			<default value="0"/>
 			<test value="1" logic="AND">
-				systems/reverser/reverser-pos-norm eq 2.0
+				systems/reverser/reverser-pos-norm[0] eq 2.0
 				propulsion/engine[0]/reverser-angle-rad ne 2.0
 			</test>
 			<test value="1" logic="AND">
-				systems/reverser/reverser-pos-norm eq 0.0
+				systems/reverser/reverser-pos-norm[0] eq 0.0
 				propulsion/engine[0]/reverser-angle-rad ne 0.0
+			</test>
+			<test value="1" logic="AND">
+				systems/reverser/reverser-pos-norm[1] eq 2.0
+				propulsion/engine[1]/reverser-angle-rad ne 2.0
+			</test>
+			<test value="1" logic="AND">
+				systems/reverser/reverser-pos-norm[1] eq 0.0
+				propulsion/engine[1]/reverser-angle-rad ne 0.0
 			</test>
 		</switch>
 		<actuator name="Thrust Reverse Control Engine 0">
-			<input>systems/reverser/reverser-pos-norm</input>
+			<input>systems/reverser/reverser-pos-norm[0]</input>
 			<rate_limit>systems/hydraulic/reverser-power</rate_limit>
 			<output>propulsion/engine[0]/reverser-angle-rad</output>
+		</actuator>
+		<actuator name="Thrust Reverse Control Engine 0">
+			<input>systems/reverser/reverser-pos-norm[1]</input>
+			<rate_limit>systems/hydraulic/reverser-power</rate_limit>
 			<output>propulsion/engine[1]/reverser-angle-rad</output>
 		</actuator>
 	</channel>

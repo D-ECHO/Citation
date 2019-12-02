@@ -32,7 +32,7 @@
         <condition>
             <or>
                 <greater-than>
-                    <property>surface-positions/reverser-norm[0]</property>
+                    <property>fdm/jsbsim/propulsion/engine[0]/reverser-angle-rad</property>
                     <value>0</value>
                 </greater-than>
                 <equals>
@@ -49,7 +49,7 @@
         <condition>
             <or>
                 <greater-than>
-                    <property>surface-positions/reverser-norm[0]</property>
+                    <property>fdm/jsbsim/propulsion/engine[0]/reverser-angle-rad</property>
                     <value>0.05</value>
                 </greater-than>
                 <equals>
@@ -66,8 +66,8 @@
         <condition>
             <or>
                 <greater-than>
-                    <property>surface-positions/reverser-norm[0]</property>
-                    <value>0.95</value>
+                    <property>fdm/jsbsim/propulsion/engine[0]/reverser-angle-rad</property>
+                    <value>1.95</value>
                 </greater-than>
                 <equals>
                     <property>controls/electric/system-test</property>
@@ -83,7 +83,7 @@
         <condition>
             <or>
                 <greater-than>
-                    <property>surface-positions/reverser-norm[1]</property>
+                    <property>fdm/jsbsim/propulsion/engine[1]/reverser-angle-rad</property>
                     <value>0</value>
                 </greater-than>
                 <equals>
@@ -100,7 +100,7 @@
         <condition>
             <or>
                 <greater-than>
-                    <property>surface-positions/reverser-norm[1]</property>
+                    <property>fdm/jsbsim/propulsion/engine[1]/reverser-angle-rad</property>
                     <value>0.05</value>
                 </greater-than>
                 <equals>
@@ -117,8 +117,8 @@
         <condition>
             <or>
                 <greater-than>
-                    <property>surface-positions/reverser-norm[1]</property>
-                    <value>0.95</value>
+                    <property>fdm/jsbsim/propulsion/engine[1]/reverser-angle-rad</property>
+                    <value>1.95</value>
                 </greater-than>
                 <equals>
                     <property>controls/electric/system-test</property>

@@ -6,6 +6,29 @@ var baggage_door_aft = aircraft.door.new("controls/baggage-door-aft",2);
 var SndIn = props.globals.getNode("/sim/sound/Cvolume",1);
 var SndOut = props.globals.getNode("/sim/sound/Ovolume",1);
 
+var starter_btn0 = props.globals.getNode("controls/electric/engine[0]/starter-btn", 1);
+var starter_btn1 = props.globals.getNode("controls/electric/engine[1]/starter-btn", 1);
+
+var timer_start0_off = maketimer(30, func() { starter_btn0.setValue(0); } );
+var timer_start1_off = maketimer(30, func() { starter_btn1.setValue(0); } );
+timer_start0_off.singleShot = 1;
+timer_start1_off.singleShot = 1;
+
+setlistener(starter_btn0, func(i) {
+	if( i.getValue() == 1 and !timer_start0_off.isRunning ) {
+		timer_start0_off.restart(30);
+	} else if ( i.getValue() == 0 and timer_start0_off.isRunning ) {
+		timer_start0_off.stop();
+	}
+});
+setlistener(starter_btn1, func(i) {
+	if( i.getValue() == 1 and !timer_start1_off.isRunning ) {
+		timer_start1_off.restart(30);
+	} else if ( i.getValue() == 0 and timer_start1_off.isRunning ) {
+		timer_start1_off.stop();
+	}
+});
+
 var resetTrim = func(){
   setprop("/controls/flight/elevator-trim", 0);
   setprop("/controls/flight/rudder-trim", 0);
@@ -167,9 +190,9 @@ var JetEngine = {
 			me.boost_pump.setBoolValue (0);
 			me.ignition_auto.setBoolValue (0);
 			if (me.autostart_in_progress) {
-			me.generator_sw.setValue (1);
-			me.throttle.setValue (0.0);
-			me.autostart_in_progress = 0;
+				me.generator_sw.setValue (1);
+				me.throttle.setValue (0.0);
+				me.autostart_in_progress = 0;
 			}
 		} else {
 			var n1 = me.n1.getValue();

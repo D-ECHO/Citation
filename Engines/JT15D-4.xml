@@ -33,6 +33,7 @@
   <maxn2>          96.0 </maxn2>
   <augmented>         0 </augmented>
   <injected>          0 </injected>
+  <ignitionn2>	    20.0 </ignitionn2>
 
   <function name="IdleThrust">
    <table>
